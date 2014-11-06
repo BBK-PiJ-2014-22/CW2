@@ -16,9 +16,16 @@ public class FractionTest {
 	test(new Fraction(1, 2),new Fraction(3, 6),"error test 2");
 	test(new Fraction(-1, 2),new Fraction(1, -2),"error test 3");
 	test(new Fraction(-1, -2),new Fraction(1, 2),"error test 4");
-	test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
+	test(new Fraction(4, 8),new Fraction(1, 2),"error test 5");
 
-        // extend with extra tests
+        // test add
+	f = new Fraction(9,10);
+	g = new Fraction(2,5);
+	h = new Fraction(5,10);
+	Fraction i = g.add(h);
+	if (!f.equals(i)) System.out.println("Multiply failed");
+	System.out.println(i);
+	
     }
 
     static void test(Fraction f1, Fraction f2, String msg){

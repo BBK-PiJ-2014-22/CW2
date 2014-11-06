@@ -1,5 +1,6 @@
 /**
  * Created by keith for the second coursework assignment.
+ * Modified by Jamie for the second coursework assignment
  */
 public class Fraction {
     private int numerator;
@@ -14,10 +15,14 @@ public class Fraction {
         int gcd = myGcd(num, denom);
         setNumerator(num / gcd);
         setDenominator(denom / gcd);
+        
+        //needs something added to normalise all fraction values on creation
+    
     }
 
     @Override
     public String toString() {
+    	//requires addition to make sure that it return correct
         return "" + getNumerator() + '/' + getDenominator();
     }
 
@@ -65,6 +70,7 @@ public class Fraction {
     }
 
     private int myGcd(int a, int b) {
+    	//Finds Greatest Common Denominator - does this work?
         while (b != 0) {
             int t = b;
             b = a % b;
@@ -72,4 +78,33 @@ public class Fraction {
         }
         return a;
     }
+
+    public Fraction add(Fraction other){
+    	
+    	int denom = this.getDenominator() * other.getDenominator();
+    	int num = this.getNumerator() * other.getDenominator() +
+    			  other.getNumerator() * this.getDenominator();
+    	
+    	return new Fraction(num, denom);
+    }
+    
+    public Fraction subtract(Fraction other){
+    	return other;//temp
+    }
+    
+    public Fraction divide(Fraction other){
+    	return other;//temp
+    }
+    
+    public Fraction absValue(){
+    	return this;//temp
+    }
+    
+    
+
+
 }
+
+
+	
+
