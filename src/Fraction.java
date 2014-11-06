@@ -89,8 +89,11 @@ public class Fraction {
     }
     
     public Fraction subtract(Fraction other){
-    	return other;//temp
-    }
+    	int denom = this.getDenominator() * other.getDenominator();
+    	int num = this.getNumerator() * other.getDenominator() -
+    			  other.getNumerator() * this.getDenominator();
+    	
+    	return new Fraction(num, denom);    }
     
     public Fraction divide(Fraction other){
     	return other;//temp

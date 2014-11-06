@@ -23,11 +23,22 @@ public class FractionTest {
 	g = new Fraction(2,5);
 	h = new Fraction(5,10);
 	Fraction i = g.add(h);
-	if (!f.equals(i)) System.out.println("Multiply failed");
+	if (!f.equals(i)) System.out.println("Add failed");
 	System.out.println(i);
+
+    // test add
+	f = new Fraction(9,10);
+	g = new Fraction(2,5);
+	h = new Fraction(5,10);
+	i = g.subtract(h);
+	if (!f.equals(i)) System.out.println("Subtract failed");
+	System.out.println(i);
+
+	
 	
     }
 
+    
     static void test(Fraction f1, Fraction f2, String msg){
     	if (! f1.equals(f2))
 		System.out.println(msg);
