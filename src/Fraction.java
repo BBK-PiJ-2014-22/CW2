@@ -121,11 +121,8 @@ public class Fraction {
     
     public Fraction subtract(Fraction other){
     	int denom = this.getDenominator() * other.getDenominator();
-    	System.out.println(denom);
     	int num = (this.getNumerator() * other.getDenominator()) -
     			  (other.getNumerator() * this.getDenominator());
-    	
-    	System.out.println(num);
     	
     	return new Fraction(num, denom);    
     
@@ -133,7 +130,9 @@ public class Fraction {
     }
     
     public Fraction divide(Fraction other){
-    	return other;//temp
+    	Fraction reciprocal = new Fraction(other.getDenominator(),other.getNumerator());
+    	return this.multiply(reciprocal);
+    
     }
     
     public Fraction absValue(){

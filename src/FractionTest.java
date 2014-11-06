@@ -11,14 +11,16 @@ public class FractionTest {
 	Fraction g = new Fraction(1,2);
 	Fraction h = new Fraction(3,5);
 	if (!f.equals(g.multiply(h))) System.out.println("Multiply failed");
-        // test equals
+
+
+	// test equals
 	test(new Fraction(1, 2),new Fraction(1, 2),"error test 1");
 	test(new Fraction(1, 2),new Fraction(3, 6),"error test 2");
 	test(new Fraction(-1, 2),new Fraction(1, -2),"error test 3");
 	test(new Fraction(-1, -2),new Fraction(1, 2),"error test 4");
 	test(new Fraction(4, 8),new Fraction(1, 2),"error test 5");
 
-        // test add
+	// test add
 	f = new Fraction(9,10);
 	g = new Fraction(2,5);
 	h = new Fraction(5,10);
@@ -26,7 +28,7 @@ public class FractionTest {
 	if (!f.equals(i)) System.out.println("Add failed");
 	System.out.println(i);
 
-    // test add
+    // test subtract
 	f = new Fraction(1,10);
 	g = new Fraction(2,5);
 	h = new Fraction(-1,10);
@@ -34,6 +36,14 @@ public class FractionTest {
 	if (!f.equals(i)) System.out.println("Subtract failed");
 	System.out.println(i);
 
+    // test divide - NOT DONE
+	f = new Fraction(1,10);
+	g = new Fraction(2,5);
+	h = new Fraction(-1,10);
+	i = g.subtract(h);
+	if (!f.equals(i)) System.out.println("Subtract failed");
+	System.out.println(i);
+	
 	
 	
     }
