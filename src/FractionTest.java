@@ -27,9 +27,9 @@ public class FractionTest {
 	System.out.println(i);
 
     // test add
-	f = new Fraction(9,10);
+	f = new Fraction(1,10);
 	g = new Fraction(2,5);
-	h = new Fraction(5,10);
+	h = new Fraction(-1,10);
 	i = g.subtract(h);
 	if (!f.equals(i)) System.out.println("Subtract failed");
 	System.out.println(i);

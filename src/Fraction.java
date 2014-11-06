@@ -2,28 +2,58 @@
  * Created by keith for the second coursework assignment.
  * Modified by Jamie for the second coursework assignment
  */
+
 public class Fraction {
     private int numerator;
     private int denominator;
 
+    
     public Fraction(int num, int denom) {
-        if (denom == 0) {
+        boolean negative;
+    	
+    	if (denom == 0) {
             System.out.println("Invalid fraction with denominator 0"); 
 	    // this should use exceptions
             return;
         }
+        
+        //this has been modified to handle negative numbers (so -1/10 = 1/-10)
+        //Negative fractions will always have a negative numerator
+ 
+        if (num < 0 || denom < 0){
+        	negative = true;
+        	num = Math.abs(num);
+        	denom = Math.abs(denom);
+        }else {
+        	negative = false;
+        }
+        
         int gcd = myGcd(num, denom);
         setNumerator(num / gcd);
         setDenominator(denom / gcd);
         
-        //needs something added to normalise all fraction values on creation
-    
+        if (negative){
+        	setNumerator(0-getNumerator());
+        }
+        
     }
 
+    
     @Override
     public String toString() {
-    	//requires addition to make sure that it return correct
-        return "" + getNumerator() + '/' + getDenominator();
+    	//requires addition to make sure that it return correctly for denominator 1
+       String str;
+    	
+    	if (getDenominator() == 1){
+    		str = Integer.toString(getNumerator());
+    	}else{  	
+    	
+    	str = "" + Math.abs(getNumerator()) + '/' + getDenominator();
+    	
+    	}
+    	
+    	return str;
+    			
     }
 
     public int getNumerator() {
@@ -51,6 +81,7 @@ public class Fraction {
 
         if (getDenominator() != fraction.getDenominator()) return false;
         if (getNumerator() != fraction.getNumerator()) return false;
+        
 
         return true;
     }
@@ -90,10 +121,16 @@ public class Fraction {
     
     public Fraction subtract(Fraction other){
     	int denom = this.getDenominator() * other.getDenominator();
-    	int num = this.getNumerator() * other.getDenominator() -
-    			  other.getNumerator() * this.getDenominator();
+    	System.out.println(denom);
+    	int num = (this.getNumerator() * other.getDenominator()) -
+    			  (other.getNumerator() * this.getDenominator());
     	
-    	return new Fraction(num, denom);    }
+    	System.out.println(num);
+    	
+    	return new Fraction(num, denom);    
+    
+    
+    }
     
     public Fraction divide(Fraction other){
     	return other;//temp
