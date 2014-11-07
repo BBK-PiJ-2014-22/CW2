@@ -38,11 +38,16 @@ public class FractionCalculator {
 	}
 	
 	
-	public Fraction calculate(Fraction operand1, String operator, Fraction operand2){
+	public static Fraction calculate(Fraction operand1, String operator, Fraction operand2){
 		
 		//Case switch on operators
 		
-		
+		if (operator == "+"){
+			return operand1.add(operand2);
+		}else {
+			return new Fraction(99,100);
+
+		}
 	}
 	
 	
