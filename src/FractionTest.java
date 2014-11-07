@@ -26,13 +26,31 @@ public class FractionTest {
 	test(new Fraction(1, 2).subtract(new Fraction(1,-4)),new Fraction(3, 4),"error test subtract 3");
 	test(new Fraction(1, 2).subtract(new Fraction(-1,-4)),new Fraction(1, 4),"error test subtract 4");
 	test(new Fraction(1, 4).subtract(new Fraction(1,2)),new Fraction(-1, 4),"error test subtract 5");
-
+	
+	//test divide
 	test(new Fraction(1, 2).divide(new Fraction(1,4)),new Fraction(2, 1),"error test divide 1");
 	test(new Fraction(1, 2).divide(new Fraction(-1,4)),new Fraction(-2, 1),"error test divide 2");
 	test(new Fraction(1, 2).divide(new Fraction(1,-4)),new Fraction(-2, 1),"error test divide 3");
 	test(new Fraction(1, 2).divide(new Fraction(-1,-4)),new Fraction(2, 1),"error test divide 4");
 	test(new Fraction(-1, -2).divide(new Fraction(-1,-4)),new Fraction(2, 1),"error test divide 5");
 
+	//test absValue
+
+	test(new Fraction(1, 2).absValue(),new Fraction(1, 2),"error test abs 1");
+	test(new Fraction(-1, 2).absValue(),new Fraction(1, 2),"error test abs 2");
+	test(new Fraction(1, -2).absValue(),new Fraction(1, 2),"error test abs 3");
+	test(new Fraction(-1, -2).absValue(),new Fraction(1, 2),"error test abs 4");
+
+/*	//test Print
+	System.out.println();
+	System.out.println("Print Tests:");
+	System.out.println(new Fraction(1,2));
+	System.out.println(new Fraction(2,1));
+	System.out.println(new Fraction(-1,2));
+	System.out.println(new Fraction(1,-2));
+	System.out.println(new Fraction(-1,-2));
+	System.out.println(new Fraction(10,2));
+*/	
 	
 	
     }

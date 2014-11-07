@@ -15,23 +15,21 @@ public class Fraction {
 		int gcd = myGcd(num, denom);
 		setNumerator(num / gcd);
 		setDenominator(denom / gcd);
+
+	//Added because the two different prints of negative fractions irritates me
+	
 	}
 
 	@Override
 	public String toString() {
-		// requires addition to make sure that it return correctly for
-		// denominator 1
-		String str;
 
 		if (getDenominator() == 1) {
-			str = Integer.toString(getNumerator());
+			return Integer.toString(getNumerator());
 		} else {
 
-			str = "" + Math.abs(getNumerator()) + '/' + getDenominator();
+			return Integer.toString(getNumerator()) + '/' + Integer.toString(getDenominator());
 
 		}
-
-		return str;
 
 	}
 
@@ -118,7 +116,7 @@ public class Fraction {
 	}
 
 	public Fraction absValue() {
-		return this;// temp
+		return new Fraction(this.getNumerator(), Math.abs(this.getDenominator()));
 	}
 
 }
