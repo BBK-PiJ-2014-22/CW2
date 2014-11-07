@@ -8,7 +8,14 @@ public class FractionCalculatorTest {
 		test(FractionCalculator.calculate(new Fraction(1,2),"*",new Fraction(1,4)),new Fraction(1,8), "error test calc *");
 		test(FractionCalculator.calculate(new Fraction(1,2),"/",new Fraction(1,4)),new Fraction(2,1), "error test calc /");
 		test(FractionCalculator.calculate(new Fraction(1,2),"-",new Fraction(1,4)),new Fraction(1,4), "error test calc -");
-		test(FractionCalculator.calculate(new Fraction(1,2),"t",new Fraction(-1,4)),new Fraction(3,4), "error test calc t");				test(FractionCalculator.calculate(new Fraction(1,8),"-",new Fraction(2,1)),new Fraction(-15,8), "error test calc sub 3");
+		test(FractionCalculator.calculate(new Fraction(1,2),"t",new Fraction(-1,4)),new Fraction(3,4), "error test calc t");	//not worink
+
+		test(FractionCalculator.negate(new Fraction(1,2)),new Fraction(-1,2), "error test neg 1");
+		test(FractionCalculator.negate(new Fraction(-1,2)),new Fraction(1,2), "error test neg 2");
+		test(FractionCalculator.absolute(new Fraction(-1,2)),new Fraction(1,2), "error test neg 1");
+		test(FractionCalculator.absolute(new Fraction(-1,2)),new Fraction(1,2), "error test neg 2");
+
+		
 		
 		
 	System.out.println("Tests complete");

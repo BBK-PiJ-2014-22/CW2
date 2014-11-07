@@ -52,8 +52,16 @@ public class FractionCalculator {
 			return operand1.multiply(operand2);
 		} else {
 			System.out.println("Invalid operator");
-			return new Fraction(-999,998);
+			return new Fraction(-999,998); //This needs to be corrected
 		}
+	}	
+	
+	public static Fraction absolute(Fraction operand){
+		return operand.absValue();	
+	}
+	
+	public static Fraction negate(Fraction operand){
+		return new Fraction(operand.getNumerator(), operand.getDenominator() * -1);
 	}
 	
 	
