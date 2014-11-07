@@ -40,13 +40,19 @@ public class FractionCalculator {
 	
 	public static Fraction calculate(Fraction operand1, String operator, Fraction operand2){
 		
-		//Case switch on operators
+		//Case switch on operators?
 		
 		if (operator == "+"){
 			return operand1.add(operand2);
-		}else {
-			return new Fraction(99,100);
-
+		} else if (operator == "-"){
+			return operand1.subtract(operand2);
+		} else if (operator == "/"){
+			return operand1.divide(operand2);
+		} else if (operator == "*"){
+			return operand1.multiply(operand2);
+		} else {
+			System.out.println("Invalid operator");
+			return new Fraction(-999,998);
 		}
 	}
 	

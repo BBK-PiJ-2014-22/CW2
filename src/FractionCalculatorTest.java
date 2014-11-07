@@ -2,11 +2,13 @@
 public class FractionCalculatorTest {
 
 	public static void main(String[] args) {
-		//test calc addition
-		test(FractionCalculator.calculate(new Fraction(1,2),"+",new Fraction(1,4)),new Fraction(3,4), "error test calc add 1");
-		test(FractionCalculator.calculate(new Fraction(1,2),"+",new Fraction(-1,4)),new Fraction(1,4), "error test calc add 2");
-		test(FractionCalculator.calculate(new Fraction(1,8),"+",new Fraction(2,1)),new Fraction(17,8), "error test calc add 3");
 		
+		//test calculation
+		test(FractionCalculator.calculate(new Fraction(1,2),"+",new Fraction(1,4)),new Fraction(3,4), "error test calc +");
+		test(FractionCalculator.calculate(new Fraction(1,2),"*",new Fraction(1,4)),new Fraction(1,8), "error test calc *");
+		test(FractionCalculator.calculate(new Fraction(1,2),"/",new Fraction(1,4)),new Fraction(2,1), "error test calc /");
+		test(FractionCalculator.calculate(new Fraction(1,2),"-",new Fraction(1,4)),new Fraction(1,4), "error test calc -");
+		test(FractionCalculator.calculate(new Fraction(1,2),"t",new Fraction(-1,4)),new Fraction(3,4), "error test calc t");				test(FractionCalculator.calculate(new Fraction(1,8),"-",new Fraction(2,1)),new Fraction(-15,8), "error test calc sub 3");
 		
 		
 	System.out.println("Tests complete");
