@@ -10,6 +10,14 @@ public class FractionCalculator {
 	private Fraction operand;
 	private String operator;
 	
+	//temp constructor whilst testing
+	public void FractionCalculatre(Fraction total, String operator, Fraction operand){
+		this.setTotal(total);
+		this.setOperator(operator);
+		this.setOperand(operand);
+	}
+	
+	
 	public Fraction getTotal() {
 		return total;
 	}
@@ -30,7 +38,12 @@ public class FractionCalculator {
 	}
 	
 	
-	
+	public Fraction calculate(Fraction operand1, String operator, Fraction operand2){
+		
+		//Case switch on operators
+		
+		
+	}
 	
 	
 }
