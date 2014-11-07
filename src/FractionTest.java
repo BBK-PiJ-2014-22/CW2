@@ -14,35 +14,20 @@ public class FractionTest {
 
 
 	// test equals
-	test(new Fraction(1, 2),new Fraction(1, 2),"error test 1");
-	test(new Fraction(1, 2),new Fraction(3, 6),"error test 2");
-	test(new Fraction(-1, 2),new Fraction(1, -2),"error test 3");
-	test(new Fraction(-1, -2),new Fraction(1, 2),"error test 4");
-	test(new Fraction(4, 8),new Fraction(1, 2),"error test 5");
+	test(new Fraction(1, 2),new Fraction(1, 2),"error test equals 1");
+	test(new Fraction(1, 2),new Fraction(3, 6),"error test equals 2");
+	test(new Fraction(-1, 2),new Fraction(1, -2),"error test equals 3");
+	test(new Fraction(-1, -2),new Fraction(1, 2),"error test equals 4");
+	test(new Fraction(4, 8),new Fraction(1, 2),"error test 5 equals 5");
 
 	// test add
-	f = new Fraction(9,10);
-	g = new Fraction(2,5);
-	h = new Fraction(5,10);
-	Fraction i = g.add(h);
-	if (!f.equals(i)) System.out.println("Add failed");
-	System.out.println(i);
+	test(new Fraction(1, 2).subtract(new Fraction(1,4)),new Fraction(1, 4),"error test subtract 1");
+	test(new Fraction(1, 2).subtract(new Fraction(-1,4)),new Fraction(3, 4),"error test subtract 2");
+	test(new Fraction(1, 2).subtract(new Fraction(1,-4)),new Fraction(3, 4),"error test subtract 3");
+	test(new Fraction(1, 2).subtract(new Fraction(-1,-4)),new Fraction(1, 4),"error test subtract 4");
+	test(new Fraction(1, 4).subtract(new Fraction(1,2)),new Fraction(-1, 4),"error test subtract 5");
 
-    // test subtract
-	f = new Fraction(1,10);
-	g = new Fraction(2,5);
-	h = new Fraction(-1,10);
-	i = g.subtract(h);
-	if (!f.equals(i)) System.out.println("Subtract failed");
-	System.out.println(i);
-
-    // test divide - NOT DONE
-	f = new Fraction(1,10);
-	g = new Fraction(2,5);
-	h = new Fraction(-1,10);
-	i = g.subtract(h);
-	if (!f.equals(i)) System.out.println("Subtract failed");
-	System.out.println(i);
+	System.out.println(new Fraction(1, 4).subtract(new Fraction(1,2)));
 	
 	
 	
