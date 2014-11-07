@@ -18,7 +18,7 @@ public class FractionTest {
 	test(new Fraction(1, 2),new Fraction(3, 6),"error test equals 2");
 	test(new Fraction(-1, 2),new Fraction(1, -2),"error test equals 3");
 	test(new Fraction(-1, -2),new Fraction(1, 2),"error test equals 4");
-	test(new Fraction(4, 8),new Fraction(1, 2),"error test 5 equals 5");
+	test(new Fraction(4, 8),new Fraction(1, 2),"error test equals 5");
 
 	// test add
 	test(new Fraction(1, 2).subtract(new Fraction(1,4)),new Fraction(1, 4),"error test subtract 1");
@@ -27,8 +27,12 @@ public class FractionTest {
 	test(new Fraction(1, 2).subtract(new Fraction(-1,-4)),new Fraction(1, 4),"error test subtract 4");
 	test(new Fraction(1, 4).subtract(new Fraction(1,2)),new Fraction(-1, 4),"error test subtract 5");
 
-	System.out.println(new Fraction(1, 4).subtract(new Fraction(1,2)));
-	
+	test(new Fraction(1, 2).divide(new Fraction(1,4)),new Fraction(2, 1),"error test divide 1");
+	test(new Fraction(1, 2).divide(new Fraction(-1,4)),new Fraction(-2, 1),"error test divide 2");
+	test(new Fraction(1, 2).divide(new Fraction(1,-4)),new Fraction(-2, 1),"error test divide 3");
+	test(new Fraction(1, 2).divide(new Fraction(-1,-4)),new Fraction(2, 1),"error test divide 4");
+	test(new Fraction(-1, -2).divide(new Fraction(-1,-4)),new Fraction(2, 1),"error test divide 5");
+
 	
 	
     }
