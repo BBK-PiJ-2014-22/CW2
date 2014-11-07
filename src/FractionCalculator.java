@@ -11,10 +11,9 @@ public class FractionCalculator {
 	private String operator;
 	
 	//temp constructor whilst testing
-	public void FractionCalculatre(Fraction total, String operator, Fraction operand){
-		this.setTotal(total);
-		this.setOperator(operator);
-		this.setOperand(operand);
+	public void FractionCalculator(){
+		this.setTotal(new Fraction(0,1));
+
 	}
 	
 	
