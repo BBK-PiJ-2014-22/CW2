@@ -1,4 +1,4 @@
-//Needs string tokenizer
+import java.util.StringTokenizer;
 
 
 public class FractionCalculator {
@@ -9,6 +9,14 @@ public class FractionCalculator {
 	private Fraction total;
 	private Fraction operand;
 	private String operator;
+	
+	public enum Token {
+		OPERATION,
+		CALCULATION,
+		FRACTION,
+		INTEGER,
+		ERROR
+	}
 	
 	//temp constructor whilst testing
 	public FractionCalculator(){
@@ -41,6 +49,8 @@ public class FractionCalculator {
 	}
 	
 	
+	//Calculations & other operators
+
 	public void calculate(String operator, Fraction operand){
 		
 		this.setOperand(null);
@@ -75,7 +85,40 @@ public class FractionCalculator {
 		this.setTotal(new Fraction(0,1));
 	}
 
+	
+	//Input reading methods
+	
+	public Token parse(String str){
+		
+		try {
+			Integer.parseInt(str);
+			return Token.INTEGER;
+		} catch(Exception NumberFormatException){
+		
+			if (str == "+" ||
+				str == "-" ||
+				str == "/" ||
+				str == "*"){
+					return Token.CALCULATION;
+				
+			}else if(str.toLowerCase().charAt(0) == 'a' ||
+					 str.toLowerCase().charAt(0) == 'n' ||
+					 str.toLowerCase().charAt(0) == 'c' ||
+					 str.toLowerCase().charAt(0) == 'q'){
+					return Token.OPERATION;
+					
+			}else if(str.indexOf("/") > 1 ){
+					return Token.FRACTION;
+					
+				}else{
+					return Token.ERROR;
+			}
 
+			
+			
+		}
+		
+	}
 
 
 

@@ -48,9 +48,14 @@ public class FractionCalculatorTest {
 	
 	
 	
+	static void testTokens(String str, Token tok){
+
+	}
+	
+	
 	
     static void testCalc(FractionCalculator calc, Fraction f1, String symbol, Fraction f2, Fraction result, String msg){
-    	    	
+    	    	//f2 is redundant for a and n 
     	calc.setTotal(f1);
     	
     	if (symbol.equals("a")){
@@ -60,7 +65,7 @@ public class FractionCalculatorTest {
     	} else{
     		calc.calculate(symbol, f2);
     	}
-    
+    	
     	if (! calc.getTotal().equals(result)){
     		System.out.println(msg);
     		System.out.println(calc.getTotal() + " != " + result);
