@@ -12,29 +12,29 @@ public class FractionCalculatorTest {
 		
 		//test calculate
 		//Test add
-		testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(99,2), "Addition test 1 failed");
-		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,4), new Fraction(99,4), "Addition test 2 failed");
-		testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(99,2), "Addition test 3 failed");
-		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,2), new Fraction(99,1), "Addition test 4 failed");
+		testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(1,2), "Addition test 1 failed");
+		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,4), new Fraction(3,4), "Addition test 2 failed");
+		testCalc(fc, new Fraction(1,1), "+", new Fraction(1,-2), new Fraction(1,2), "Addition test 3 failed");
+		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,2), new Fraction(1,1), "Addition test 4 failed");
 
 		//test subtract
-		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,2), new Fraction(99,2), "Subtract test 1 failed");
-		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,4), new Fraction(99,4), "Subtract test 2 failed");
-		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,2), new Fraction(99,2), "Subtract test 3 failed");
-		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,2), new Fraction(99,1), "Subtract test 4 failed");
+		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,2), new Fraction(1,-2), "Subtract test 1 failed");
+		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,4), new Fraction(1,4), "Subtract test 2 failed");
+		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,-2), new Fraction(1,2), "Subtract test 3 failed");
+		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,2), new Fraction(0,1), "Subtract test 4 failed");
 		
-		//test divide
-		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(99,2), "Divide test 1 failed");
-		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,4), new Fraction(99,4), "Divide test 2 failed");
-		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(99,2), "Divide test 3 failed");
-		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,2), new Fraction(99,1), "Divide test 4 failed");
-		
-		//test multiply
-		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(99,2), "Multiply test 1 failed");
-		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(99,4), "Multiply test 2 failed");
-		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(99,2), "Multiply test 3 failed");
-		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,2), new Fraction(99,1), "Multiply test 4 failed");
-		
+//		//test divide
+//		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 1 failed");
+//		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,4), new Fraction(2,1), "Divide test 2 failed");
+//		testCalc(fc, new Fraction(1,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 3 failed");
+//		testCalc(fc, new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
+//		
+//		//test multiply
+//		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Multiply test 1 failed");
+//		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Multiply test 2 failed");
+//		testCalc(fc, new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Multiply test 3 failed");
+//		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,2), new Fraction(1,4), "Multiply test 4 failed");
+//		
 		
 		
 		
@@ -53,7 +53,10 @@ public class FractionCalculatorTest {
     	calc.setTotal(f1);
     	calc.calculate(symbol, f2);
     
-    	if (! calc.getTotal().equals(result))
-		System.out.println(msg);
+    	if (! calc.getTotal().equals(result)){
+    		System.out.println(msg);
+    		System.out.println(calc.getTotal() + " != " + result);
+    		System.out.println();
+    	}
     }
 }
