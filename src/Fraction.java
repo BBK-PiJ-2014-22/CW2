@@ -93,9 +93,8 @@ public class Fraction {
 	public Fraction add(Fraction other) {
 
 		int denom = this.getDenominator() * other.getDenominator();
-		int num = this.getNumerator() * other.getDenominator()
-				+ other.getNumerator() * this.getDenominator();
-
+		int num = (this.getNumerator() * other.getDenominator())
+				+ (other.getNumerator() * this.getDenominator());
 		return new Fraction(num, denom);
 	}
 
@@ -103,16 +102,12 @@ public class Fraction {
 		int denom = this.getDenominator() * other.getDenominator();
 		int num = (this.getNumerator() * other.getDenominator())
 				- (other.getNumerator() * this.getDenominator());
-
 		return new Fraction(num, denom);
-
 	}
 
 	public Fraction divide(Fraction other) {
-		Fraction reciprocal = new Fraction(other.getDenominator(),
-				other.getNumerator());
+		Fraction reciprocal = new Fraction(other.getDenominator(), other.getNumerator());
 		return this.multiply(reciprocal);
-
 	}
 
 	public Fraction absValue() {

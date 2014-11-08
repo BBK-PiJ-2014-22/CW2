@@ -47,14 +47,15 @@ public class FractionCalculator {
 		this.setOperator(null);
 		
 		switch (operator){		
-		case "+":
-			this.setTotal(this.getTotal().add(operand));
+
 		case "-":
 			this.setTotal(this.getTotal().subtract(operand));
 		case "/":
 			this.setTotal(this.getTotal().divide(operand));
 		case "*":
 			this.setTotal(this.getTotal().multiply(operand));
+		case "+":
+			this.setTotal(this.getTotal().add(operand));
 		}				
 	}	
 	
