@@ -11,10 +11,15 @@ public class FractionCalculator {
 	private String operator;
 	
 	//temp constructor whilst testing
-	public void FractionCalculator(){
+	public FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
 	}
 	
+	@Override
+	public String toString() {
+		return "FractionCalculator [total=" + total + ", operand=" + operand
+				+ ", operator=" + operator + "]";
+	}
 	
 	public Fraction getTotal() {
 		return total;
@@ -60,6 +65,29 @@ public class FractionCalculator {
 	public void negate(){
 		this.setTotal(this.getTotal().multiply(new Fraction(1,-1)));
 		}
+	
+	public void clear(){
+		this.setTotal(new Fraction(0,1));
+	}
+
+
+
+
+
+
+	
+		
+
+	
+	//Evaluate - 
+	//Takes in a fraction (starting value) and a string(calculation instructions)
+	//Results in new fraction
+	//Recursive?
+	
+	//Parse
+	//Takes a substring and says "What is this?" Fraction/Operator/Number
+	//
+	
 	
 	
 }
