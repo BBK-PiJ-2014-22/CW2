@@ -7,9 +7,6 @@ public class FractionCalculatorTest {
 		
 		System.out.println(fc);
 		
-
-
-		
 		//test calculate
 		//Test add
 		testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(1,2), "Addition test 1 failed");
@@ -23,18 +20,18 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,-2), new Fraction(1,2), "Subtract test 3 failed");
 		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,2), new Fraction(0,1), "Subtract test 4 failed");
 		
-//		//test divide
-//		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 1 failed");
-//		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,4), new Fraction(2,1), "Divide test 2 failed");
-//		testCalc(fc, new Fraction(1,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 3 failed");
-//		testCalc(fc, new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
-//		
-//		//test multiply
-//		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Multiply test 1 failed");
-//		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Multiply test 2 failed");
-//		testCalc(fc, new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Multiply test 3 failed");
-//		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,2), new Fraction(1,4), "Multiply test 4 failed");
-//		
+		//test divide
+		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 1 failed");
+		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,4), new Fraction(2,1), "Divide test 2 failed");
+		testCalc(fc, new Fraction(1,1), "/", new Fraction(1,2), new Fraction(2,1), "Divide test 3 failed");
+		testCalc(fc, new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
+		
+		//test multiply
+		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Multiply test 1 failed");
+		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Multiply test 2 failed");
+		testCalc(fc, new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Multiply test 3 failed");
+		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,2), new Fraction(1,4), "Multiply test 4 failed");
+		
 		
 		
 		

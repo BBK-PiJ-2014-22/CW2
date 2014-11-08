@@ -102,8 +102,6 @@ public class Fraction {
 		int denom = this.getDenominator() * other.getDenominator();
 		int num = (this.getNumerator() * other.getDenominator())
 				- (other.getNumerator() * this.getDenominator());
-		
-		System.out.println(this.toString() + " - " + other + " = " + new Fraction(num, denom) );
 		return new Fraction(num, denom);
 	}
 

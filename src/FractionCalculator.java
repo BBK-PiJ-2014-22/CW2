@@ -50,12 +50,16 @@ public class FractionCalculator {
 
 		case "-":
 			this.setTotal(this.getTotal().subtract(operand));
+			break;
 		case "/":
 			this.setTotal(this.getTotal().divide(operand));
+			break;
 		case "*":
 			this.setTotal(this.getTotal().multiply(operand));
+			break;
 		case "+":
 			this.setTotal(this.getTotal().add(operand));
+			break;
 		}				
 	}	
 	
