@@ -13,7 +13,6 @@ public class FractionCalculator {
 	//temp constructor whilst testing
 	public void FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
-
 	}
 	
 	
@@ -37,31 +36,30 @@ public class FractionCalculator {
 	}
 	
 	
-	public static Fraction calculate(Fraction operand1, String operator, Fraction operand2){
+	public void calculate(String operator, Fraction operand){
 		
-		//Case switch on operators?
+		this.setOperand(null);
+		this.setOperator(null);
 		
-		if (operator == "+"){
-			return operand1.add(operand2);
-		} else if (operator == "-"){
-			return operand1.subtract(operand2);
-		} else if (operator == "/"){
-			return operand1.divide(operand2);
-		} else if (operator == "*"){
-			return operand1.multiply(operand2);
-		} else {
-			System.out.println("Invalid operator");
-			return new Fraction(-999,998); //This needs to be corrected
-		}
+		switch (operator){		
+		case "+":
+			this.setTotal(this.getTotal().add(operand));
+		case "-":
+			this.setTotal(this.getTotal().subtract(operand));
+		case "/":
+			this.setTotal(this.getTotal().divide(operand));
+		case "*":
+			this.setTotal(this.getTotal().multiply(operand));
+		}				
 	}	
 	
-	public static Fraction absolute(Fraction operand){
-		return operand.absValue();	
+	public void absolute(){
+		this.setTotal(this.getTotal().absValue());	
 	}
 	
-	public static Fraction negate(Fraction operand){
-		return new Fraction(operand.getNumerator(), operand.getDenominator() * -1);
-	}
+	public void negate(){
+		this.setTotal(this.getTotal().multiply(new Fraction(1,-1)));
+		}
 	
 	
 }
