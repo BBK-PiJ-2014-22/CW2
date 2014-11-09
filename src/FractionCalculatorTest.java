@@ -41,6 +41,40 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(1,2), "n", new Fraction(0,1), new Fraction(1,-2), "Negate test 2 failed");
 		testCalc(fc, new Fraction(0,1), "n", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");		
 		
+		
+		//test Parse
+
+		testParse(fc, "+", "Calculation", "Parse Calc test 1 failed");
+		testParse(fc, "-", "Calculation", "Parse Calc test 2 failed");
+		testParse(fc, "*", "Calculation", "Parse Calc test 3 failed");
+		testParse(fc, "/", "Calculation", "Parse Calc test 4 failed");
+		
+		testParse(fc, "a", 		 "Operation", "Parse Operation test 1 failed");
+		testParse(fc, "abs",	 "Operation", "Parse Operation test 2 failed");
+		testParse(fc, "Absolute","Operation", "Parse Operation test 3 failed");
+		testParse(fc, "q", 		 "Operation", "Parse Operation test 4 failed");
+		testParse(fc, "Q", 		 "Operation", "Parse Operation test 5 failed");
+		testParse(fc, "quit",	 "Operation", "Parse Operation test 6 failed");
+		testParse(fc, "N",		 "Operation", "Parse Operation test 7 failed");
+		testParse(fc, "n", 		 "Operation", "Parse Operation test 8 failed");
+		testParse(fc, "neg", 	 "Operation", "Parse Operation test 9 failed");
+		testParse(fc, "c",		 "Operation", "Parse Operation test 10 failed");
+		testParse(fc, "C", 		 "Operation", "Parse Operation test 11 failed");
+		testParse(fc, "clr", 	 "Operation", "Parse Operation test 12 failed");
+		
+		testParse(fc, "1", 		"Integer", "Parse Integer test 1 failed");
+		testParse(fc, "0",		"Integer", "Parse Integer test 2 failed");
+		testParse(fc, "-1",		"Integer", "Parse Integer test 3 failed");
+		
+		testParse(fc, "1/1", 		"Integer", "Parse Integer test 1 failed");
+		testParse(fc, "0/2",		"Integer", "Parse Integer test 2 failed");
+		testParse(fc, "1/0",		"Integer", "Parse Integer test 3 failed");
+		
+		
+		
+		
+		
+		
 		System.out.println(fc);
 		System.out.println("Tests complete");
 	}
@@ -48,28 +82,41 @@ public class FractionCalculatorTest {
 	
 	
 	
-	static void testTokens(String str, Token tok){
 
-	}
 	
 	
 	
-    static void testCalc(FractionCalculator calc, Fraction f1, String symbol, Fraction f2, Fraction result, String msg){
+    static void testCalc(FractionCalculator calc, Fraction startValue, String symbol, Fraction operand, Fraction result, String message){
     	    	//f2 is redundant for a and n 
-    	calc.setTotal(f1);
+    	calc.setTotal(startValue);
     	
     	if (symbol.equals("a")){
     		calc.absolute();
     	} else if (symbol.equals("n")){
     		calc.negate();
     	} else{
-    		calc.calculate(symbol, f2);
+    		calc.calculate(symbol, operand);
     	}
     	
     	if (! calc.getTotal().equals(result)){
-    		System.out.println(msg);
+    		System.out.println(message);
     		System.out.println(calc.getTotal() + " != " + result);
     		System.out.println();
     	}
     }
+    	
+    static void testParse(FractionCalculator calc, String entry, String result, String message){
+
+    	
+    	String parsed = calc.parse(entry);
+   		
+   		if (! parsed.equals(result)){
+   			System.out.println(message);
+   			System.out.println(parsed + " != "+result);
+   			System.out.println();
+   		}
+    		
+    		
+   	}
+    
 }

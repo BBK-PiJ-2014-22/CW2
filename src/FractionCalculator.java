@@ -10,14 +10,6 @@ public class FractionCalculator {
 	private Fraction operand;
 	private String operator;
 	
-	public enum Token {
-		OPERATION,
-		CALCULATION,
-		FRACTION,
-		INTEGER,
-		ERROR
-	}
-	
 	//temp constructor whilst testing
 	public FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
@@ -88,30 +80,30 @@ public class FractionCalculator {
 	
 	//Input reading methods
 	
-	public Token parse(String str){
+	public String parse(String str){
 		
 		try {
 			Integer.parseInt(str);
-			return Token.INTEGER;
+			return "Integer";
 		} catch(Exception NumberFormatException){
 		
 			if (str == "+" ||
 				str == "-" ||
 				str == "/" ||
 				str == "*"){
-					return Token.CALCULATION;
+					return "Calculation";
 				
 			}else if(str.toLowerCase().charAt(0) == 'a' ||
 					 str.toLowerCase().charAt(0) == 'n' ||
 					 str.toLowerCase().charAt(0) == 'c' ||
 					 str.toLowerCase().charAt(0) == 'q'){
-					return Token.OPERATION;
+					return "Operation";
 					
 			}else if(str.indexOf("/") > 1 ){
-					return Token.FRACTION;
+					return "Fraction";
 					
 				}else{
-					return Token.ERROR;
+					return "Error";
 			}
 
 			
