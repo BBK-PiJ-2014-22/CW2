@@ -61,18 +61,16 @@ public class FractionCalculatorTest {
 		testParse(fc, "c",		 "Operation", "Parse Operation test 10 failed");
 		testParse(fc, "C", 		 "Operation", "Parse Operation test 11 failed");
 		testParse(fc, "clr", 	 "Operation", "Parse Operation test 12 failed");
-		
+	
 		testParse(fc, "1", 		"Integer", "Parse Integer test 1 failed");
 		testParse(fc, "0",		"Integer", "Parse Integer test 2 failed");
 		testParse(fc, "-1",		"Integer", "Parse Integer test 3 failed");
 		
-		testParse(fc, "1/1", 		"Integer", "Parse Integer test 1 failed");
-		testParse(fc, "0/2",		"Integer", "Parse Integer test 2 failed");
-		testParse(fc, "1/0",		"Integer", "Parse Integer test 3 failed");
+		testParse(fc, "1/1", 		"Fraction", "Parse Fraction test 1 failed");
+		testParse(fc, "0/2",		"Fraction", "Parse Fraction test 2 failed");
+		testParse(fc, "1/0",		"Fraction", "Parse Fraction test 3 failed");
 		
-		
-		
-		
+
 		
 		
 		System.out.println(fc);

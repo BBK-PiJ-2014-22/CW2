@@ -81,7 +81,8 @@ public class FractionCalculator {
 	//Input reading methods
 	
 	public String parse(String str){
-		
+
+
 		try {
 			Integer.parseInt(str);
 			return "Integer";
@@ -99,10 +100,9 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'q'){
 					return "Operation";
 					
-			}else if(str.indexOf("/") > 1 ){
+			}else if(str.indexOf("/") >= 1 ){		
 					return "Fraction";
-					
-				}else{
+			}else{
 					return "Error";
 			}
 
@@ -113,20 +113,10 @@ public class FractionCalculator {
 	}
 
 
-
-
-	
-		
-
-	
 	//Evaluate - 
 	//Takes in a fraction (starting value) and a string(calculation instructions)
 	//Results in new fraction
 	//Recursive?
-	
-	//Parse
-	//Takes a substring and says "What is this?" Fraction/Operator/Number
-	//
 	
 	
 	
