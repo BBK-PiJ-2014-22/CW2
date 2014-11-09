@@ -114,4 +114,17 @@ public class Fraction {
 		return new Fraction(this.getNumerator(), Math.abs(this.getDenominator()));
 	}
 
+	public static Fraction parseFraction(String str){
+		
+			int position = str.indexOf("/");
+			int numerator = Integer.parseInt(str.substring(0, position));
+			int denominator = Integer.parseInt(str.substring(position+1, str.length()));
+			return new Fraction(numerator, denominator);
+			
+			
+
+		
+	}
+	
+	
 }

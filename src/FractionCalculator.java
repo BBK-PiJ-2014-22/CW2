@@ -100,8 +100,9 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'q'){
 					return "Operation";
 					
-			}else if(str.indexOf("/") >= 1 ){		
-					return "Fraction";
+			}else if(str.indexOf("/") >= 1 ){	
+				
+				return "Fraction";
 			}else{
 					return "Error";
 			}
@@ -111,8 +112,7 @@ public class FractionCalculator {
 		}
 		
 	}
-
-
+	
 	//Evaluate - 
 	//Takes in a fraction (starting value) and a string(calculation instructions)
 	//Results in new fraction

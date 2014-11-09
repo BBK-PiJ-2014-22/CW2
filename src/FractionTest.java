@@ -58,7 +58,10 @@ public class FractionTest {
 	System.out.println(new Fraction(-1,-2));
 	System.out.println(new Fraction(10,2));
 */	
-	
+	test(Fraction.parseFraction("1/2"), new Fraction(1,2),"error test parse 1");
+	test(Fraction.parseFraction("-1/2"), new Fraction(1,-2),"error test parse 3");
+	test(Fraction.parseFraction("0/2"), new Fraction(0,1),"error test parse 4");
+
 	
     }
 
