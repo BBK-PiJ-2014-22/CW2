@@ -10,7 +10,6 @@ public class FractionCalculator {
 	private Fraction operand;
 	private String operator;
 	
-	//temp constructor whilst testing
 	public FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
 	}
@@ -80,9 +79,7 @@ public class FractionCalculator {
 	
 	//Input reading methods
 	
-	public String parse(String str){
-
-
+	private String parse(String str){
 		try {
 			Integer.parseInt(str);
 			return "Integer";
@@ -105,13 +102,36 @@ public class FractionCalculator {
 				return "Fraction";
 			}else{
 					return "Error";
-			}
-
-			
-			
-		}
-		
+			}	
+		}	
 	}
+	
+	
+	//doX methods
+	//Private methods intended to perform operations when necessary
+	
+	public void doFraction(String str){
+		try{
+			Fraction entry = Fraction.parseFraction(str);
+			
+			if (this.getOperator() != null){
+				this.setOperand(entry);
+				this.calculate(this.getOperator(), this.getOperand());	
+			} else {
+				this.setTotal(entry);
+			}
+		
+		}catch (Exception NumberFormatException){
+			this.doError(str);
+		}
+	}
+	
+	public void doError(String str){
+		System.out.println(str + "is not a valid entry");
+		System.out.println("Ending program.");
+		System.exit(0);
+	}
+	
 	
 	//Evaluate - 
 	//Takes in a fraction (starting value) and a string(calculation instructions)

@@ -41,8 +41,9 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(1,2), "n", new Fraction(0,1), new Fraction(1,-2), "Negate test 2 failed");
 		testCalc(fc, new Fraction(0,1), "n", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");		
 		
-		
-		//test Parse
+
+	    //removed as parse is now fully tested and private
+/*		//test Parse
 
 		testParse(fc, "+", "Calculation", "Parse Calc test 1 failed");
 		testParse(fc, "-", "Calculation", "Parse Calc test 2 failed");
@@ -68,7 +69,7 @@ public class FractionCalculatorTest {
 		
 		testParse(fc, "1/1", 		"Fraction", "Parse Fraction test 1 failed");
 		testParse(fc, "0/2",		"Fraction", "Parse Fraction test 2 failed");
-		testParse(fc, "1/0",		"Fraction", "Parse Fraction test 3 failed");
+		testParse(fc, "1/0",		"Fraction", "Parse Fraction test 3 failed")*/;
 		
 
 		
@@ -102,19 +103,18 @@ public class FractionCalculatorTest {
     		System.out.println();
     	}
     }
-    	
-    static void testParse(FractionCalculator calc, String entry, String result, String message){
-
+    
+ 
+    //removed as parse is now fully tested and private
+/*    static void testParse(FractionCalculator calc, String entry, String result, String message){
     	
     	String parsed = calc.parse(entry);
-   		
+    	
    		if (! parsed.equals(result)){
    			System.out.println(message);
    			System.out.println(parsed + " != "+result);
    			System.out.println();
-   		}
-    		
-    		
-   	}
+   		}			
+   	}*/
     
 }
