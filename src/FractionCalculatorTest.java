@@ -42,59 +42,44 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(0,1), "n", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");		
 		
 
-	    //removed as parse is now fully tested and private
-/*		//test Parse
-
-		testParse(fc, "+", "Calculation", "Parse Calc test 1 failed");
-		testParse(fc, "-", "Calculation", "Parse Calc test 2 failed");
-		testParse(fc, "*", "Calculation", "Parse Calc test 3 failed");
-		testParse(fc, "/", "Calculation", "Parse Calc test 4 failed");
+		//test doThings
 		
-		testParse(fc, "a", 		 "Operation", "Parse Operation test 1 failed");
-		testParse(fc, "abs",	 "Operation", "Parse Operation test 2 failed");
-		testParse(fc, "Absolute","Operation", "Parse Operation test 3 failed");
-		testParse(fc, "q", 		 "Operation", "Parse Operation test 4 failed");
-		testParse(fc, "Q", 		 "Operation", "Parse Operation test 5 failed");
-		testParse(fc, "quit",	 "Operation", "Parse Operation test 6 failed");
-		testParse(fc, "N",		 "Operation", "Parse Operation test 7 failed");
-		testParse(fc, "n", 		 "Operation", "Parse Operation test 8 failed");
-		testParse(fc, "neg", 	 "Operation", "Parse Operation test 9 failed");
-		testParse(fc, "c",		 "Operation", "Parse Operation test 10 failed");
-		testParse(fc, "C", 		 "Operation", "Parse Operation test 11 failed");
-		testParse(fc, "clr", 	 "Operation", "Parse Operation test 12 failed");
-	
-		testParse(fc, "1", 		"Integer", "Parse Integer test 1 failed");
-		testParse(fc, "0",		"Integer", "Parse Integer test 2 failed");
-		testParse(fc, "-1",		"Integer", "Parse Integer test 3 failed");
+		testDoFraction(fc, new Fraction(1,2), "+", "1/2", new Fraction(1,1), "doFraction test 1 failed");
 		
-		testParse(fc, "1/1", 		"Fraction", "Parse Fraction test 1 failed");
-		testParse(fc, "0/2",		"Fraction", "Parse Fraction test 2 failed");
-		testParse(fc, "1/0",		"Fraction", "Parse Fraction test 3 failed")*/;
 		
 
-		
-		
 		System.out.println(fc);
 		System.out.println("Tests complete");
 	}
 
 	
 	
-	
-
-	
-	
-	
-    static void testCalc(FractionCalculator calc, Fraction startValue, String symbol, Fraction operand, Fraction result, String message){
+	//Test scripts
+	static void testDoFraction(FractionCalculator calc, Fraction startValue, String operator,String entry, Fraction result, String message){
+    	if (operator.equals("")){
+    		calc.setOperator(null);
+    	}else{
+    		calc.setOperator(operator);
+    	}    	
+    		calc.doFraction(entry);
+    
+    	if (! calc.getTotal().equals(result)){
+    		System.out.println(message);
+    		System.out.println(calc.getTotal() + " != " + result);
+    		System.out.println();
+    	}
+    }
+	   
+    static void testCalc(FractionCalculator calc, Fraction startValue, String operator, Fraction operand, Fraction result, String message){
     	    	//f2 is redundant for a and n 
     	calc.setTotal(startValue);
     	
-    	if (symbol.equals("a")){
+    	if (operator.equals("a")){
     		calc.absolute();
-    	} else if (symbol.equals("n")){
+    	} else if (operator.equals("n")){
     		calc.negate();
     	} else{
-    		calc.calculate(symbol, operand);
+    		calc.calculate(operator, operand);
     	}
     	
     	if (! calc.getTotal().equals(result)){
@@ -103,6 +88,46 @@ public class FractionCalculatorTest {
     		System.out.println();
     	}
     }
+    
+    
+    
+    
+    //Test code removed due to change of method to private
+    
+	
+    //removed as parse is now fully tested and private
+/*		//test Parse
+
+	testParse(fc, "+", "Calculation", "Parse Calc test 1 failed");
+	testParse(fc, "-", "Calculation", "Parse Calc test 2 failed");
+	testParse(fc, "*", "Calculation", "Parse Calc test 3 failed");
+	testParse(fc, "/", "Calculation", "Parse Calc test 4 failed");
+	
+	testParse(fc, "a", 		 "Operation", "Parse Operation test 1 failed");
+	testParse(fc, "abs",	 "Operation", "Parse Operation test 2 failed");
+	testParse(fc, "Absolute","Operation", "Parse Operation test 3 failed");
+	testParse(fc, "q", 		 "Operation", "Parse Operation test 4 failed");
+	testParse(fc, "Q", 		 "Operation", "Parse Operation test 5 failed");
+	testParse(fc, "quit",	 "Operation", "Parse Operation test 6 failed");
+	testParse(fc, "N",		 "Operation", "Parse Operation test 7 failed");
+	testParse(fc, "n", 		 "Operation", "Parse Operation test 8 failed");
+	testParse(fc, "neg", 	 "Operation", "Parse Operation test 9 failed");
+	testParse(fc, "c",		 "Operation", "Parse Operation test 10 failed");
+	testParse(fc, "C", 		 "Operation", "Parse Operation test 11 failed");
+	testParse(fc, "clr", 	 "Operation", "Parse Operation test 12 failed");
+
+	testParse(fc, "1", 		"Integer", "Parse Integer test 1 failed");
+	testParse(fc, "0",		"Integer", "Parse Integer test 2 failed");
+	testParse(fc, "-1",		"Integer", "Parse Integer test 3 failed");
+	
+	testParse(fc, "1/1", 		"Fraction", "Parse Fraction test 1 failed");
+	testParse(fc, "0/2",		"Fraction", "Parse Fraction test 2 failed");
+	testParse(fc, "1/0",		"Fraction", "Parse Fraction test 3 failed")*/;
+	
+
+	
+	
+    
     
  
     //removed as parse is now fully tested and private
@@ -116,5 +141,7 @@ public class FractionCalculatorTest {
    			System.out.println();
    		}			
    	}*/
+    
+ 
     
 }
