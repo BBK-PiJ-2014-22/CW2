@@ -45,9 +45,12 @@ public class FractionCalculatorTest {
 		//test doThings
 		
 		testDoFraction(fc, new Fraction(1,2), "+", "1/2", new Fraction(1,1), "doFraction test 1 failed");
+		testDoFraction(fc, new Fraction(1,2), "-", "1/2", new Fraction(0,1), "doFraction test 2 failed");
+		testDoFraction(fc, new Fraction(1,2), "*", "1/4", new Fraction(1,8), "doFraction test 3 failed");
+		testDoFraction(fc, new Fraction(1,2), "", "1/4", new Fraction(1,4), "doFraction test 4 failed");		
+		//testDoFraction(fc, new Fraction(1,2), "", "asds/4", new Fraction(1,4), "doFraction test 4 failed");
 		
 		
-
 		System.out.println(fc);
 		System.out.println("Tests complete");
 	}
@@ -56,7 +59,10 @@ public class FractionCalculatorTest {
 	
 	//Test scripts
 	static void testDoFraction(FractionCalculator calc, Fraction startValue, String operator,String entry, Fraction result, String message){
-    	if (operator.equals("")){
+    	
+		calc.setTotal(startValue);
+		
+		if (operator.equals("")){
     		calc.setOperator(null);
     	}else{
     		calc.setOperator(operator);

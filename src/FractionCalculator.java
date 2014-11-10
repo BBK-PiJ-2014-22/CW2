@@ -76,7 +76,7 @@ public class FractionCalculator {
 	}
 	
 	public void negate(){
-		this.setTotal(this.getTotal().multiply(new Fraction(1,-1)));
+		this.setTotal(this.getTotal().negate());
 		}
 	
 	public void clear(){
@@ -86,6 +86,8 @@ public class FractionCalculator {
 	
 	//Input reading methods
 	
+	
+	//
 	private String parse(String str){
 		try {
 			Integer.parseInt(str);
