@@ -1,10 +1,16 @@
+/**
+ * 
+ *Calculations
+ *Operations
+ *
+ * 
+ * 
+ */
+
+
 import java.util.StringTokenizer;
 
-
 public class FractionCalculator {
-
-	//Needs constructor method to be able to read in a single line 
-	
 	
 	private Fraction total;
 	private Fraction operand;
@@ -41,6 +47,7 @@ public class FractionCalculator {
 	
 	
 	//Calculations & other operators
+	
 
 	public void calculate(String operator, Fraction operand){
 		

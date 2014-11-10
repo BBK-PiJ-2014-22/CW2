@@ -4,6 +4,7 @@
 public class FractionTest {
     public static void main(String[] args) {
 
+    	
         // test divide by zero - should print an error and exit
         new Fraction(1, 0);
         // test multiply
@@ -47,8 +48,16 @@ public class FractionTest {
 	test(new Fraction(-1, 2).absValue(),new Fraction(1, 2),"error test abs 2");
 	test(new Fraction(1, -2).absValue(),new Fraction(1, 2),"error test abs 3");
 	test(new Fraction(-1, -2).absValue(),new Fraction(1, 2),"error test abs 4");
-
-/*	//test Print
+	
+	
+	//test negate
+	test(new Fraction(1, 2).negate(),new Fraction(1, -2),"error test negate 1");
+	test(new Fraction(-1, 2).negate(),new Fraction(1, 2),"error test negate 2");
+	test(new Fraction(1, -2).negate(),new Fraction(1, 2),"error test negate 3");
+	test(new Fraction(-1, -2).negate(),new Fraction(1, -2),"error test negate 4");
+	
+	
+/*	//test Print - commented out for ease of testing
 	System.out.println();
 	System.out.println("Print Tests:");
 	System.out.println(new Fraction(1,2));
