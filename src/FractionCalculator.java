@@ -79,20 +79,19 @@ public class FractionCalculator {
 			Integer.parseInt(str);
 			doFraction(str+"/1");
 		} catch(Exception NumberFormatException){
-		
 			if (str == "+" ||
 				str == "-" ||
 				str == "/" ||
 				str == "*"){
 					doOperator(str);
-				
+					
+			}else if(str.indexOf("/") >= 1 ){	
+				doFraction(str);				
+
 			}else if(str.toLowerCase().charAt(0) == 'a' ||
 					 str.toLowerCase().charAt(0) == 'n' ||
 					 str.toLowerCase().charAt(0) == 'c' ){
 					doUnaryOperation(str);
-					
-			}else if(str.indexOf("/") >= 1 ){	
-				doFraction(str);
 			}else{
 				doExit(str);
 			}	
