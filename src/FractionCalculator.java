@@ -129,14 +129,15 @@ public class FractionCalculator {
 	}
 	
 	private void doUnaryOperation(String operator){
-		switch (operator){
-		case "a":
+		char operatorChar = operator.toLowerCase().charAt(0);
+		switch (operatorChar){
+		case 'a':
 			this.setTotal(this.getTotal().absValue());
 			break;
-		case "n":
+		case 'n':
 			this.setTotal(this.getTotal().negate());
 			break;
-		case "c":
+		case 'c':
 			this.setTotal(new Fraction(0,1));		
 			break;
 		}

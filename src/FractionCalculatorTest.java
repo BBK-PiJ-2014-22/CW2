@@ -6,15 +6,21 @@ public class FractionCalculatorTest {
 		FractionCalculator fc = new FractionCalculator();
 
 		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String message)
-		//test Parse
-/*		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),"Parse Fraction Test 1 Failed");
+		//test Parse Fractions
+		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),"Parse Fraction Test 1 Failed");
 		testParse(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),"Parse Fraction Test 2 Failed");
 		testParse(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),"Parse Fraction Test 3 Failed");
 		testParse(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),"Parse Fraction Test 4 Failed");
-		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),"Parse Fraction Test 5 Failed");*/
-		testParse(fc, new Fraction(1,2), "*", "a/4",new Fraction(1,2),"Parse Fraction Test 6 Failed");
+		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),"Parse Fraction Test 5 Failed");
+	
 		
-		
+		//test Parse Unary Operations
+		testParse(fc, new Fraction(1,2), "", "abs",new Fraction(1,2),"Parse Unary Op Test 1 Failed");
+		testParse(fc, new Fraction(1,-2), "", "a",new Fraction(1,2),"Parse Unary Op Test 2 Failed");
+		testParse(fc, new Fraction(1,2), "", "NEG",new Fraction(-1,2),"Parse Unary Op Test 3 Failed");
+		testParse(fc, new Fraction(1,2), "", "clear",new Fraction(0,1),"Parse Unary Op Test 4 Failed");
+	
+		//
 		
 		
 		
