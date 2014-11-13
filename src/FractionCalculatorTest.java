@@ -7,11 +7,13 @@ public class FractionCalculatorTest {
 
 		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, , String message)
 		//test Parse Fractions
-		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),null, null, "Parse Fraction Test 1 Failed");
+		
+		
+/*		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),null, null, "Parse Fraction Test 1 Failed");
 		testParse(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),null, null, "Parse Fraction Test 2 Failed");
 		testParse(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),null, null, "Parse Fraction Test 3 Failed");
 		testParse(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),null, null, "Parse Fraction Test 4 Failed");
-		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),null, null, "Parse Fraction Test 5 Failed");
+		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),null, null, "Parse Fraction Test 5 Failed");*/
 		testParse(fc, new Fraction(1,2), "*", "a/4",new Fraction(1,2),null, null, "Parse Fraction Test 6 Failed");
 		testParse(fc, new Fraction(1,2), "*", "4/a",new Fraction(1,2),null, null, "Parse Fraction Test 7 Failed");		
 		testParse(fc, new Fraction(1,2), null, "3/4",new Fraction(3,4),null, null, "Parse Fraction Test 8 Failed");
@@ -148,18 +150,26 @@ public class FractionCalculatorTest {
     	 calc.setTotal(startTotal);
     	 calc.setOperator(startOperator);
     	 
-    	calc.parseToken(entry);
-  
-   		if (! (calc.getTotal().equals(result)) &&
-   			   calc.getOperator().equals(operator) &&
-   			   calc.getOperand().equals(operator)){
-   			System.out.println(message);
-   			System.out.println("Expected: [Total = "+result+ "] , [Operator = "+ operator + "], [Operand = "+operand + "]");
-   			System.out.println("Actual: " + calc);
-   			System.out.println();
+    	 boolean error = false;
+    	 
+    	 calc.parseToken(entry);
+
+   		if (! (calc.getTotal().equals(result))){
+   			error = true;
+   		} else if(operand == null && operand != calc.getOperand() ||
+   				  operator == null && operator != calc.getOperator()){
+   			error = true;
+   		} else if (operand != null && !operand.equals(calc.getOperand()) ||
+   				   operator != null && !operator.equals(calc.getOperator())){
+   			error = true;
    		}
-   		
-   		
+   			
+   		if (error){
+			System.out.println(message);
+			System.out.println("Expected: FractionCalculator [total="+result+ "] ,[operand="+operand + "],"+ "[operator="+ operator + "] ");
+			System.out.println("Actual:   " + calc);
+			System.out.println();
+   		}
    	}
     
  

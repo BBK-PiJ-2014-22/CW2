@@ -44,35 +44,7 @@ public class FractionCalculator {
 	}
 	
 	
-	//Calculations & other operators
-	
 
-	private void calculate(){
-		
-		String operator = this.getOperator();
-		Fraction operand = this.getOperand();
-	
-		
-		switch (operator){		
-
-		case "-":
-			this.setTotal(this.getTotal().subtract(operand));
-			break;
-		case "/":
-			this.setTotal(this.getTotal().divide(operand));
-			break;
-		case "*":
-			this.setTotal(this.getTotal().multiply(operand));
-			break;
-		case "+":
-			this.setTotal(this.getTotal().add(operand));
-			break;
-		}
-		
-		this.setOperand(null);
-		this.setOperator(null);
-	}	
-	
 	
 	//Input reading methods
 	public void parseToken(String str){
@@ -120,13 +92,11 @@ public class FractionCalculator {
 	
 	private void doError(String str){
 		if (str == "*" || str == "/" || str == "-" || str == "+"){
-			System.out.println("Cannot have two operators in a row");
-			this.reset();
-			
+			System.out.println("Cannot have two operators in a row");			
 		}else if (! (str.toLowerCase().charAt(0) == 'q')){
 			System.out.println("'"+str + "' is not a valid entry");
-			this.reset();
 		}		
+		this.reset();
 	}
 	
 	private void doUnaryOperation(String operator){
@@ -163,6 +133,36 @@ public class FractionCalculator {
 		this.setOperand(null);
 		this.setOperator(null);
 	}
+	
+	//Calculations & other operators
+	
+
+	private void calculate(){
+		
+		String operator = this.getOperator();
+		Fraction operand = this.getOperand();
+	
+		
+		switch (operator){		
+
+		case "-":
+			this.setTotal(this.getTotal().subtract(operand));
+			break;
+		case "/":
+			this.setTotal(this.getTotal().divide(operand));
+			break;
+		case "*":
+			this.setTotal(this.getTotal().multiply(operand));
+			break;
+		case "+":
+			this.setTotal(this.getTotal().add(operand));
+			break;
+		}
+		
+		this.setOperand(null);
+		this.setOperator(null);
+	}	
+	
 	
 	
 	//Evaluate - 
