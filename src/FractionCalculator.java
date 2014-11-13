@@ -44,10 +44,24 @@ public class FractionCalculator {
 	}
 	
 	
-
-	
 	//Input reading methods
-	public void parseToken(String str){
+	
+	public Fraction evaluate(String entry){
+	
+		int tokenEnd = entry.indexOf(" ");
+		
+		if (tokenEnd > 0){
+			this.parseToken(entry.substring(0,tokenEnd));
+			evaluate(entry.substring(tokenEnd, entry.length()));
+			return this.getTotal();
+		}else{
+			this.parseToken(entry);
+			return this.getTotal();
+		}
+		
+	}
+	
+	private void parseToken(String str){
 		try {
 			Integer.parseInt(str);
 			doFraction(str+"/1");
@@ -75,8 +89,10 @@ public class FractionCalculator {
 	}
 	
 	
-	//doX methods
-	//Private methods intended to perform operations when necessary
+	//do methods
+	//Private methods, to be called by the Parse method. These methods 
+	//will perform actions based upon the String tokens fed into them, 
+	//updating the FractionCalculator.
 	
 	private void doFraction(String str){
 		try{
@@ -93,15 +109,6 @@ public class FractionCalculator {
 		}
 	}
 	
-	private void doError(String str){
-		if (str == "*" || str == "/" || str == "-" || str == "+" ||
-			str.substring(0,1) == "a" || str.substring(0,1) == "c" || str.substring(0,1) == "n"){
-			System.out.println("Cannot have two operators in a row");			
-		}else if (! (str.toLowerCase().charAt(0) == 'q')){
-			System.out.println("'"+str + "' is not a valid entry");
-		}		
-		this.reset();
-	}
 	
 	private void doUnaryOperation(String operator){
 		
@@ -125,7 +132,7 @@ public class FractionCalculator {
 			this.doError(operator);
 		}
 	}
-	
+
 	private void doOperator(String operator){
 		if (this.getOperator() == null){
 			this.setOperator(operator);
@@ -133,24 +140,33 @@ public class FractionCalculator {
 			this.doError(operator);
 		}
 	}
+
+	private void doError(String str){
+		if (str == "*" || str == "/" || str == "-" || str == "+" ||
+			str.substring(0,1) == "a" || str.substring(0,1) == "c" || str.substring(0,1) == "n"){
+			System.out.println("Cannot have two operators in a row");			
+		}else if (! (str.toLowerCase().charAt(0) == 'q')){
+			System.out.println("'"+str + "' is not a valid entry");
+		}		
+		this.reset();
+	}
 	
+	
+	
+	//Internal update methods
+	//To be called from the Do methods to make updates to the object
 	private void reset(){
 		this.setTotal(new Fraction(0,1));
 		this.setOperand(null);
 		this.setOperator(null);
 	}
 	
-	//Calculations & other operators
-	
-
 	private void calculate(){
 		
 		String operator = this.getOperator();
 		Fraction operand = this.getOperand();
 	
-		
 		switch (operator){		
-
 		case "-":
 			this.setTotal(this.getTotal().subtract(operand));
 			break;

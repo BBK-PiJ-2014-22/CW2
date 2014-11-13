@@ -1,3 +1,16 @@
+//NOTE TO JAMIE
+//YOU HAVE WRITTEN THE EVALUATE METHOD
+//IT WORKS FOR SINGLE OPERATIONS
+//YOU NOW NEED TO:
+//1) Test the evaluate method with long strings
+//2) Write the main and launch methods
+//3) Play about with it
+//4) Make your code not look shit
+//5) Test it again
+//6) Make sure you have good comments
+//7) Celebrate with gin
+
+
 
 public class FractionCalculatorTest {
 
@@ -5,50 +18,78 @@ public class FractionCalculatorTest {
 		
 		FractionCalculator fc = new FractionCalculator();
 
-		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, , String message)
-		//test Parse Fractions
 		
 		
-		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),null, null, "Parse Fraction Test 1 Failed");
-		testParse(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),null, null, "Parse Fraction Test 2 Failed");
-		testParse(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),null, null, "Parse Fraction Test 3 Failed");
-		testParse(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),null, null, "Parse Fraction Test 4 Failed");
-		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),null, null, "Parse Fraction Test 5 Failed");
-		testParse(fc, new Fraction(1,2), "*", "a/4",new Fraction(0,1),null, null, "Parse Fraction Test 6 Failed");
-		testParse(fc, new Fraction(1,2), "*", "4/a",new Fraction(0,1),null, null, "Parse Fraction Test 7 Failed");		
-		testParse(fc, new Fraction(1,2), null, "3/4",new Fraction(3,4),null, null, "Parse Fraction Test 8 Failed");
+		
+		//Tests solo operators
+		testEvaluate(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),null, null, "Parse Fraction Test 1 Failed");
+		testEvaluate(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),null, null, "Parse Fraction Test 2 Failed");
+		testEvaluate(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),null, null, "Parse Fraction Test 3 Failed");
+		testEvaluate(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),null, null, "Parse Fraction Test 4 Failed");
+		testEvaluate(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),null, null, "Parse Fraction Test 5 Failed");
+		testEvaluate(fc, new Fraction(1,2), "*", "a/4",new Fraction(0,1),null, null, "Parse Fraction Test 6 Failed");
+		testEvaluate(fc, new Fraction(1,2), "*", "4/a",new Fraction(0,1),null, null, "Parse Fraction Test 7 Failed");		
+		testEvaluate(fc, new Fraction(1,2), null, "3/4",new Fraction(3,4),null, null, "Parse Fraction Test 8 Failed");
 			
 		//test Parse Unary Operations
-		testParse(fc, new Fraction(1,2), null, "abs",new Fraction(1,2),null, null, "Parse Unary Op Test 1 Failed");
-		testParse(fc, new Fraction(1,-2), null, "a",new Fraction(1,2),null, null, "Parse Unary Op Test 2 Failed");
-		testParse(fc, new Fraction(1,2), null, "NEG",new Fraction(-1,2),null, null, "Parse Unary Op Test 3 Failed");
-		testParse(fc, new Fraction(1,2), null, "clear",new Fraction(0,1),null, null, "Parse Unary Op Test 4 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "abs",new Fraction(1,2),null, null, "Parse Unary Op Test 1 Failed");
+		testEvaluate(fc, new Fraction(1,-2), null, "a",new Fraction(1,2),null, null, "Parse Unary Op Test 2 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "NEG",new Fraction(-1,2),null, null, "Parse Unary Op Test 3 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "clear",new Fraction(0,1),null, null, "Parse Unary Op Test 4 Failed");
 	
 		//test Parse Operators
-		testParse(fc, new Fraction(1,2), null, "+",new Fraction(1,2),"+", null, "Parse Operator Test 1 Failed");
-		testParse(fc, new Fraction(1,2), null, "-",new Fraction(1,2),"-", null, "Parse Operator Test 2 Failed");
-		testParse(fc, new Fraction(1,2), null, "*",new Fraction(1,2),"*", null, "Parse Operator Test 3 Failed");
-		testParse(fc, new Fraction(1,2), null, "/",new Fraction(1,2),"/", null, "Parse Operator Test 4 Failed");		
-		testParse(fc, new Fraction(1,2), "/", "/",new Fraction(0,1),null, null, "Parse Operator Test 5 Failed");		
+		testEvaluate(fc, new Fraction(1,2), null, "+",new Fraction(1,2),"+", null, "Parse Operator Test 1 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "-",new Fraction(1,2),"-", null, "Parse Operator Test 2 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "*",new Fraction(1,2),"*", null, "Parse Operator Test 3 Failed");
+		testEvaluate(fc, new Fraction(1,2), null, "/",new Fraction(1,2),"/", null, "Parse Operator Test 4 Failed");		
+		testEvaluate(fc, new Fraction(1,2), "/", "/",new Fraction(0,1),null, null, "Parse Operator Test 5 Failed");		
 		
 		//test morons
-		testParse(fc, new Fraction(1,2), "/", "dasdsad",new Fraction(0,1),null, null, "Parse moron Test 1 Failed");		
+		testEvaluate(fc, new Fraction(1,2), "/", "dasdsad",new Fraction(0,1),null, null, "Parse moron Test 1 Failed");		
 		
 		
 		
 		System.out.println(fc);
 		System.out.println("Tests complete");
-		
-		fc.parseToken("quit");
-		
-
 	}
-
 	
-//Removed due to change of methods to private
+	
+	static void testEvaluate(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, String message){
+    	
+   	 calc.setTotal(startTotal);
+   	 calc.setOperator(startOperator);
+   	 
+   	 boolean error = false;
+   	 
+   	 calc.evaluate(entry);
 
-	//Removed due to change to private
-	/*
+  		if (! (calc.getTotal().equals(result))){
+  			error = true;
+  		} else if(operand == null && operand != calc.getOperand() ||
+  				  operator == null && operator != calc.getOperator()){
+  			error = true;
+  		} else if (operand != null && !operand.equals(calc.getOperand()) ||
+  				   operator != null && !operator.equals(calc.getOperator())){
+  			error = true;
+  		}
+  			
+  		if (error){
+			System.out.println(message);
+			System.out.println("Expected: FractionCalculator [total="+result+ "] ,[operand="+operand + "],"+ "[operator="+ operator + "] ");
+			System.out.println("Actual:   " + calc);
+			System.out.println();
+  		}
+  	}
+}		
+
+		//Removed due to change of methods to private
+		
+		
+		
+		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, , String message)
+		//test Parse Fractions
+	
+		/*
 	//test calculate
 	//Test add
 	testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(1,2), "Addition test 1 failed");
@@ -146,33 +187,3 @@ public class FractionCalculatorTest {
     */
 
  
-     static void testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, String message){
-    	
-    	 calc.setTotal(startTotal);
-    	 calc.setOperator(startOperator);
-    	 
-    	 boolean error = false;
-    	 
-    	 calc.parseToken(entry);
-
-   		if (! (calc.getTotal().equals(result))){
-   			error = true;
-   		} else if(operand == null && operand != calc.getOperand() ||
-   				  operator == null && operator != calc.getOperator()){
-   			error = true;
-   		} else if (operand != null && !operand.equals(calc.getOperand()) ||
-   				   operator != null && !operator.equals(calc.getOperator())){
-   			error = true;
-   		}
-   			
-   		if (error){
-			System.out.println(message);
-			System.out.println("Expected: FractionCalculator [total="+result+ "] ,[operand="+operand + "],"+ "[operator="+ operator + "] ");
-			System.out.println("Actual:   " + calc);
-			System.out.println();
-   		}
-   	}
-    
- 
-    
-}
