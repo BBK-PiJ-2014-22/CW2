@@ -47,7 +47,7 @@ public class FractionCalculator {
 	//Calculations & other operators
 	
 
-	public void calculate(){
+	private void calculate(){
 		
 		String operator = this.getOperator();
 		Fraction operand = this.getOperand();
@@ -74,29 +74,27 @@ public class FractionCalculator {
 	
 	
 	//Input reading methods
-	private String parse(String str){
+	public void parseToken(String str){
 		try {
 			Integer.parseInt(str);
-			return str;
+			doFraction(str+"/1");
 		} catch(Exception NumberFormatException){
 		
 			if (str == "+" ||
 				str == "-" ||
 				str == "/" ||
 				str == "*"){
-					return "Calculation";
+					doOperator(str);
 				
 			}else if(str.toLowerCase().charAt(0) == 'a' ||
 					 str.toLowerCase().charAt(0) == 'n' ||
-					 str.toLowerCase().charAt(0) == 'c' ||
-					 str.toLowerCase().charAt(0) == 'q'){
-					return "Operation";
+					 str.toLowerCase().charAt(0) == 'c' ){
+					doUnaryOperation(str);
 					
 			}else if(str.indexOf("/") >= 1 ){	
-				
-				return "Fraction";
+				doFraction(str);
 			}else{
-					return "Error";
+				doExit(str);
 			}	
 		}	
 	}
@@ -105,33 +103,33 @@ public class FractionCalculator {
 	//doX methods
 	//Private methods intended to perform operations when necessary
 	
-	public void doFraction(String str){
+	private void doFraction(String str){
 		try{
 			Fraction entry = Fraction.parseFraction(str);
-			
+
 			if (this.getOperator() != null){
 				this.setOperand(entry);
 				this.calculate();	
 			} else {
 				this.setTotal(entry);
 			}
-		
 		}catch (Exception NumberFormatException){
 			this.doExit(str);
 		}
 	}
 	
-	public void doExit(String str){
+	private void doExit(String str){
 		if (str == "*" || str == "/" || str == "-" || str == "+"){
 			System.out.println("Cannot have two operators in a row");
 		}else if (! (str.toLowerCase().charAt(0) == 'q')){
 			System.out.println("'"+str + "' is not a valid entry");
 		}
 		System.out.println("Ending program.");
-		System.exit(0);
+		//System.exit(0);
+		
 	}
 	
-	public void doOperation(String operator){
+	private void doUnaryOperation(String operator){
 		switch (operator){
 		case "a":
 			this.setTotal(this.getTotal().absValue());
@@ -145,13 +143,12 @@ public class FractionCalculator {
 		}
 	}
 	
-	public void doOperator(String operator){
+	private void doOperator(String operator){
 		if (this.getOperator() == null){
 			this.setOperator(operator);
 		}else{
 			doExit(operator);
 		}
-		
 	}
 	
 	
