@@ -49,45 +49,47 @@ public class FractionCalculator {
 	//Calculations & other operators
 	
 
-	public void calculate(String operator, Fraction operand){
-		
-		this.setOperand(null);
-		this.setOperator(null);
-		
+	public static Fraction calculate(Fraction operand1, String operator, Fraction operand2){
+				
 		switch (operator){		
-
 		case "-":
-			this.setTotal(this.getTotal().subtract(operand));
-			break;
+			return operand1.subtract(operand2);
 		case "/":
-			this.setTotal(this.getTotal().divide(operand));
-			break;
+			return operand1.divide(operand2);
 		case "*":
-			this.setTotal(this.getTotal().multiply(operand));
-			break;
+			return operand1.multiply(operand2);
 		case "+":
-			this.setTotal(this.getTotal().add(operand));
-			break;
+			return operand1.add(operand2);
+		default:
+			return null;
 		}				
 	}	
 	
-	public void absolute(){
-		this.setTotal(this.getTotal().absValue());	
-	}
-	
-	public void negate(){
-		this.setTotal(this.getTotal().negate());
+	public static Fraction operate(Fraction operand, String operator){
+		switch(operator){
+			case "a":
+				return operand.absValue();	
+			case "n":
+				return operand.negate();
+			case "c":
+				return new Fraction(0,1);
+			default:
+				return null;
 		}
-	
-	public void clear(){
-		this.setTotal(new Fraction(0,1));
 	}
 
+	public static void exit(String entry){
+		if (entry.charAt(0) != 'q'){
+			System.out.println(entry+ "is not recognised.");
+		}
+		System.out.println("Exiting program");
+		System.exit(0);
+	
+	}
+	
 	
 	//Input reading methods
 	
-	
-	//
 	private String parse(String str){
 		try {
 			Integer.parseInt(str);
@@ -102,15 +104,17 @@ public class FractionCalculator {
 				
 			}else if(str.toLowerCase().charAt(0) == 'a' ||
 					 str.toLowerCase().charAt(0) == 'n' ||
-					 str.toLowerCase().charAt(0) == 'c' ||
-					 str.toLowerCase().charAt(0) == 'q'){
+					 str.toLowerCase().charAt(0) == 'c' ){
 					return "Operation";
 					
 			}else if(str.indexOf("/") >= 1 ){	
-				
 				return "Fraction";
+			}else if(str.toLowerCase().charAt(0) == 'q'){
+				exit(str);
+				return "Quit";
 			}else{
-					return "Error";
+		
+				return "Error";
 			}	
 		}	
 	}
@@ -118,7 +122,7 @@ public class FractionCalculator {
 	
 	//doX methods
 	//Private methods intended to perform operations when necessary
-	
+/*	
 	public void doFraction(String str){
 		try{
 			Fraction entry = Fraction.parseFraction(str);
@@ -141,7 +145,7 @@ public class FractionCalculator {
 		System.exit(0);
 	}
 	
-	
+	*/
 	//Evaluate - 
 	//Takes in a fraction (starting value) and a string(calculation instructions)
 	//Results in new fraction

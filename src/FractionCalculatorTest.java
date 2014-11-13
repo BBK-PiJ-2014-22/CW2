@@ -7,49 +7,38 @@ public class FractionCalculatorTest {
 				
 		//test calculate
 		//Test add
-		testCalc(fc, new Fraction(0,1), "+", new Fraction(1,2), new Fraction(1,2), "Addition test 1 failed");
-		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,4), new Fraction(3,4), "Addition test 2 failed");
-		testCalc(fc, new Fraction(1,1), "+", new Fraction(1,-2), new Fraction(1,2), "Addition test 3 failed");
-		testCalc(fc, new Fraction(1,2), "+", new Fraction(1,2), new Fraction(1,1), "Addition test 4 failed");
+		testCalc(new Fraction(0,1), "+", new Fraction(1,2), new Fraction(1,2), "Addition test 1 failed");
+		testCalc(new Fraction(1,2), "+", new Fraction(1,4), new Fraction(3,4), "Addition test 2 failed");
+		testCalc(new Fraction(1,1), "+", new Fraction(1,-2), new Fraction(1,2), "Addition test 3 failed");
+		testCalc(new Fraction(1,2), "+", new Fraction(1,2), new Fraction(1,1), "Addition test 4 failed");
 
 		//test subtract
-		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,2), new Fraction(1,-2), "Subtract test 1 failed");
-		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,4), new Fraction(1,4), "Subtract test 2 failed");
-		testCalc(fc, new Fraction(0,1), "-", new Fraction(1,-2), new Fraction(1,2), "Subtract test 3 failed");
-		testCalc(fc, new Fraction(1,2), "-", new Fraction(1,2), new Fraction(0,1), "Subtract test 4 failed");
+		testCalc(new Fraction(0,1), "-", new Fraction(1,2), new Fraction(1,-2), "Subtract test 1 failed");
+		testCalc(new Fraction(1,2), "-", new Fraction(1,4), new Fraction(1,4), "Subtract test 2 failed");
+		testCalc(new Fraction(0,1), "-", new Fraction(1,-2), new Fraction(1,2), "Subtract test 3 failed");
+		testCalc(new Fraction(1,2), "-", new Fraction(1,2), new Fraction(0,1), "Subtract test 4 failed");
 		
 		//test divide
-		testCalc(fc, new Fraction(0,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 1 failed");
-		testCalc(fc, new Fraction(1,2), "/", new Fraction(1,4), new Fraction(2,1), "Divide test 2 failed");
-		testCalc(fc, new Fraction(1,1), "/", new Fraction(1,2), new Fraction(2,1), "Divide test 3 failed");
-		testCalc(fc, new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
+		testCalc(new Fraction(0,1), "/", new Fraction(1,2), new Fraction(0,1), "Divide test 1 failed");
+		testCalc(new Fraction(1,2), "/", new Fraction(1,4), new Fraction(2,1), "Divide test 2 failed");
+		testCalc(new Fraction(1,1), "/", new Fraction(1,2), new Fraction(2,1), "Divide test 3 failed");
+		testCalc(new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
 		
-		//test Negate
-		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Negate test 1 failed");
-		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Negate test 2 failed");
-		testCalc(fc, new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");
-		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,2), new Fraction(1,4), "Negate test 4 failed");
-		
-		//test Absolute - f2 is redundant
-		testCalc(fc, new Fraction(0,1), "a", new Fraction(0,1), new Fraction(0,1), "Absolute test 1 failed");
-		testCalc(fc, new Fraction(1,-2), "a", new Fraction(0,1), new Fraction(1,2), "Absolute test 2 failed");
-		testCalc(fc, new Fraction(1,2), "a", new Fraction(0,1), new Fraction(1,2), "Absolute test 3 failed");
-		
-		
-		//test Negate - f2 is redundant
-		testCalc(fc, new Fraction(1,-2), "n", new Fraction(0,1), new Fraction(1,2), "Negate test 1 failed");
-		testCalc(fc, new Fraction(1,2), "n", new Fraction(0,1), new Fraction(1,-2), "Negate test 2 failed");
-		testCalc(fc, new Fraction(0,1), "n", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");		
-		
+		//test multiply
+		testCalc(new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Negate test 1 failed");
+		testCalc(new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Negate test 2 failed");
+		testCalc(new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");
+		testCalc(new Fraction(1,2), "*", new Fraction(1,2), new Fraction(1,4), "Negate test 4 failed");
+			
 
-		//test doThings
+/*		//test doThings
 		
 		testDoFraction(fc, new Fraction(1,2), "+", "1/2", new Fraction(1,1), "doFraction test 1 failed");
 		testDoFraction(fc, new Fraction(1,2), "-", "1/2", new Fraction(0,1), "doFraction test 2 failed");
 		testDoFraction(fc, new Fraction(1,2), "*", "1/4", new Fraction(1,8), "doFraction test 3 failed");
 		testDoFraction(fc, new Fraction(1,2), "", "1/4", new Fraction(1,4), "doFraction test 4 failed");		
 		//testDoFraction(fc, new Fraction(1,2), "", "asds/4", new Fraction(1,4), "doFraction test 4 failed");
-		
+*/		
 		
 		System.out.println(fc);
 		System.out.println("Tests complete");
@@ -57,7 +46,7 @@ public class FractionCalculatorTest {
 
 	
 	
-	//Test scripts
+/*	//Test scripts
 	static void testDoFraction(FractionCalculator calc, Fraction startValue, String operator,String entry, Fraction result, String message){
     	
 		calc.setTotal(startValue);
@@ -74,25 +63,15 @@ public class FractionCalculatorTest {
     		System.out.println(calc.getTotal() + " != " + result);
     		System.out.println();
     	}
-    }
+    }*/
 	   
-    static void testCalc(FractionCalculator calc, Fraction startValue, String operator, Fraction operand, Fraction result, String message){
-    	    	//f2 is redundant for a and n 
-    	calc.setTotal(startValue);
-    	
-    	if (operator.equals("a")){
-    		calc.absolute();
-    	} else if (operator.equals("n")){
-    		calc.negate();
-    	} else{
-    		calc.calculate(operator, operand);
-    	}
-    	
-    	if (! calc.getTotal().equals(result)){
-    		System.out.println(message);
-    		System.out.println(calc.getTotal() + " != " + result);
-    		System.out.println();
-    	}
+    static void testCalc(Fraction operand1, String operator, Fraction operand2, Fraction result, String message){
+  
+    		if (! FractionCalculator.calculate(operand1, operator, operand2).equals(result)){
+    			System.out.println(message);
+    			System.out.println(operand1 + operator + operand2 + " != "+ result);
+    			System.out.println();
+    		}
     }
     
     
@@ -101,7 +80,6 @@ public class FractionCalculatorTest {
     //Test code removed due to change of method to private
     
 	
-    //removed as parse is now fully tested and private
 /*		//test Parse
 
 	testParse(fc, "+", "Calculation", "Parse Calc test 1 failed");
