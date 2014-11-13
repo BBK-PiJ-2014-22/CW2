@@ -101,17 +101,18 @@ public class FractionCalculator {
 	
 	private void doUnaryOperation(String operator){
 		
+		operator = operator.substring(0,1).toLowerCase();
+		
 		if (this.getOperator() == null){
 	
-			char operatorChar = operator.toLowerCase().charAt(0);
-			switch (operatorChar){
-			case 'a':
+			switch (operator){
+			case "a":
 				this.setTotal(this.getTotal().absValue());
 				break;
-			case 'n':
+			case "n":
 				this.setTotal(this.getTotal().negate());
 				break;
-			case 'c':
+			case "c":
 				this.setTotal(new Fraction(0,1));		
 				break;
 			}
