@@ -65,6 +65,9 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'n' ||
 					 str.toLowerCase().charAt(0) == 'c' ){
 					doUnaryOperation(str);
+			}else if(str.toLowerCase().charAt(0) == 'q'){
+				System.out.println("Thank you for using Fraction calculator!");
+				System.exit(0);
 			}else{
 				this.doError(str);
 			}
@@ -91,7 +94,8 @@ public class FractionCalculator {
 	}
 	
 	private void doError(String str){
-		if (str == "*" || str == "/" || str == "-" || str == "+"){
+		if (str == "*" || str == "/" || str == "-" || str == "+" ||
+			str.substring(0,1) == "a" || str.substring(0,1) == "c" || str.substring(0,1) == "n"){
 			System.out.println("Cannot have two operators in a row");			
 		}else if (! (str.toLowerCase().charAt(0) == 'q')){
 			System.out.println("'"+str + "' is not a valid entry");
@@ -121,6 +125,7 @@ public class FractionCalculator {
 			this.doError(operator);
 		}
 	}
+	
 	private void doOperator(String operator){
 		if (this.getOperator() == null){
 			this.setOperator(operator);

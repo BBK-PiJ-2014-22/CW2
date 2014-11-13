@@ -17,24 +17,29 @@ public class FractionCalculatorTest {
 		testParse(fc, new Fraction(1,2), "*", "a/4",new Fraction(0,1),null, null, "Parse Fraction Test 6 Failed");
 		testParse(fc, new Fraction(1,2), "*", "4/a",new Fraction(0,1),null, null, "Parse Fraction Test 7 Failed");		
 		testParse(fc, new Fraction(1,2), null, "3/4",new Fraction(3,4),null, null, "Parse Fraction Test 8 Failed");
-		
-		
+			
 		//test Parse Unary Operations
 		testParse(fc, new Fraction(1,2), null, "abs",new Fraction(1,2),null, null, "Parse Unary Op Test 1 Failed");
 		testParse(fc, new Fraction(1,-2), null, "a",new Fraction(1,2),null, null, "Parse Unary Op Test 2 Failed");
 		testParse(fc, new Fraction(1,2), null, "NEG",new Fraction(-1,2),null, null, "Parse Unary Op Test 3 Failed");
 		testParse(fc, new Fraction(1,2), null, "clear",new Fraction(0,1),null, null, "Parse Unary Op Test 4 Failed");
 	
+		//test Parse Operators
 		testParse(fc, new Fraction(1,2), null, "+",new Fraction(1,2),"+", null, "Parse Operator Test 1 Failed");
 		testParse(fc, new Fraction(1,2), null, "-",new Fraction(1,2),"-", null, "Parse Operator Test 2 Failed");
 		testParse(fc, new Fraction(1,2), null, "*",new Fraction(1,2),"*", null, "Parse Operator Test 3 Failed");
 		testParse(fc, new Fraction(1,2), null, "/",new Fraction(1,2),"/", null, "Parse Operator Test 4 Failed");		
 		testParse(fc, new Fraction(1,2), "/", "/",new Fraction(0,1),null, null, "Parse Operator Test 5 Failed");		
 		
+		//test morons
+		testParse(fc, new Fraction(1,2), "/", "dasdsad",new Fraction(0,1),null, null, "Parse moron Test 1 Failed");		
+		
 		
 		
 		System.out.println(fc);
 		System.out.println("Tests complete");
+		
+		fc.parseToken("quit");
 		
 
 	}
