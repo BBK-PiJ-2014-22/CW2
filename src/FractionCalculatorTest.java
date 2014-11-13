@@ -5,23 +5,28 @@ public class FractionCalculatorTest {
 		
 		FractionCalculator fc = new FractionCalculator();
 
-		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String message)
+		//testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, , String message)
 		//test Parse Fractions
-		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),"Parse Fraction Test 1 Failed");
-		testParse(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),"Parse Fraction Test 2 Failed");
-		testParse(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),"Parse Fraction Test 3 Failed");
-		testParse(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),"Parse Fraction Test 4 Failed");
-		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),"Parse Fraction Test 5 Failed");
-	
+		testParse(fc, new Fraction(1,2), "+", "1/4",new Fraction(3,4),null, null, "Parse Fraction Test 1 Failed");
+		testParse(fc, new Fraction(1,2), "-", "1/4",new Fraction(1,4),null, null, "Parse Fraction Test 2 Failed");
+		testParse(fc, new Fraction(1,2), "*", "1/4",new Fraction(1,8),null, null, "Parse Fraction Test 3 Failed");
+		testParse(fc, new Fraction(1,2), "/", "1/4",new Fraction(2,1),null, null, "Parse Fraction Test 4 Failed");
+		testParse(fc, new Fraction(1,2), "+", "1",new Fraction(3,2),null, null, "Parse Fraction Test 5 Failed");
+		testParse(fc, new Fraction(1,2), "*", "a/4",new Fraction(1,2),null, null, "Parse Fraction Test 6 Failed");
+		testParse(fc, new Fraction(1,2), "*", "4/a",new Fraction(1,2),null, null, "Parse Fraction Test 7 Failed");		
+		testParse(fc, new Fraction(1,2), null, "3/4",new Fraction(3,4),null, null, "Parse Fraction Test 8 Failed");
+		
 		
 		//test Parse Unary Operations
-		testParse(fc, new Fraction(1,2), "", "abs",new Fraction(1,2),"Parse Unary Op Test 1 Failed");
-		testParse(fc, new Fraction(1,-2), "", "a",new Fraction(1,2),"Parse Unary Op Test 2 Failed");
-		testParse(fc, new Fraction(1,2), "", "NEG",new Fraction(-1,2),"Parse Unary Op Test 3 Failed");
-		testParse(fc, new Fraction(1,2), "", "clear",new Fraction(0,1),"Parse Unary Op Test 4 Failed");
+		testParse(fc, new Fraction(1,2), "", "abs",new Fraction(1,2),null, null, "Parse Unary Op Test 1 Failed");
+		testParse(fc, new Fraction(1,-2), "", "a",new Fraction(1,2),null, null, "Parse Unary Op Test 2 Failed");
+		testParse(fc, new Fraction(1,2), "", "NEG",new Fraction(-1,2),null, null, "Parse Unary Op Test 3 Failed");
+		testParse(fc, new Fraction(1,2), "", "clear",new Fraction(0,1),null, null, "Parse Unary Op Test 4 Failed");
 	
-		//
-		
+		testParse(fc, new Fraction(1,2), "", "+",new Fraction(1,2),null, null, "Parse Operator Test 1 Failed");
+		testParse(fc, new Fraction(1,2), "", "-",new Fraction(1,2),null, null, "Parse Operator Test 2 Failed");
+		testParse(fc, new Fraction(1,2), "", "*",new Fraction(-1,2),null, null, "Parse Operator Test 3 Failed");
+		testParse(fc, new Fraction(1,2), "", "/",new Fraction(0,1),null, null, "Parse Operator Test 4 Failed");		
 		
 		
 		
@@ -138,18 +143,23 @@ public class FractionCalculatorTest {
 	
 
  
-     static void testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String message){
+     static void testParse(FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand, String message){
     	
     	 calc.setTotal(startTotal);
     	 calc.setOperator(startOperator);
     	 
     	calc.parseToken(entry);
   
-   		if (! calc.getTotal().equals(result)){
+   		if (! (calc.getTotal().equals(result)) &&
+   			   calc.getOperator().equals(operator) &&
+   			   calc.getOperand().equals(operator)){
    			System.out.println(message);
-   			System.out.println(calc.getTotal() + " != "+result);
+   			System.out.println("Expected: [Total = "+result+ "] , [Operator = "+ operator + "], [Operand = "+operand + "]");
+   			System.out.println("Actual: " + calc);
    			System.out.println();
-   		}			
+   		}
+   		
+   		
    	}
     
  

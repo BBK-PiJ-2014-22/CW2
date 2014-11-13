@@ -51,9 +51,7 @@ public class FractionCalculator {
 		
 		String operator = this.getOperator();
 		Fraction operand = this.getOperand();
-		
-		this.setOperand(null);
-		this.setOperator(null);
+	
 		
 		switch (operator){		
 
@@ -69,7 +67,10 @@ public class FractionCalculator {
 		case "+":
 			this.setTotal(this.getTotal().add(operand));
 			break;
-		}				
+		}
+		
+		this.setOperand(null);
+		this.setOperator(null);
 	}	
 	
 	
@@ -93,8 +94,8 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'c' ){
 					doUnaryOperation(str);
 			}else{
-				doExit(str);
-			}	
+				this.doError(str);
+			}
 		}	
 	}
 	
@@ -113,42 +114,54 @@ public class FractionCalculator {
 				this.setTotal(entry);
 			}
 		}catch (Exception NumberFormatException){
-			this.doExit(str);
+			this.doError(str);
 		}
 	}
 	
-	private void doExit(String str){
+	private void doError(String str){
 		if (str == "*" || str == "/" || str == "-" || str == "+"){
 			System.out.println("Cannot have two operators in a row");
+			this.reset();
+			
 		}else if (! (str.toLowerCase().charAt(0) == 'q')){
 			System.out.println("'"+str + "' is not a valid entry");
-		}
-		System.out.println("Ending program.");
-		//System.exit(0);
-		
+			this.reset();
+		}		
 	}
 	
 	private void doUnaryOperation(String operator){
-		char operatorChar = operator.toLowerCase().charAt(0);
-		switch (operatorChar){
-		case 'a':
-			this.setTotal(this.getTotal().absValue());
-			break;
-		case 'n':
-			this.setTotal(this.getTotal().negate());
-			break;
-		case 'c':
-			this.setTotal(new Fraction(0,1));		
-			break;
+		
+		if (this.getOperator() == null){
+	
+			char operatorChar = operator.toLowerCase().charAt(0);
+			switch (operatorChar){
+			case 'a':
+				this.setTotal(this.getTotal().absValue());
+				break;
+			case 'n':
+				this.setTotal(this.getTotal().negate());
+				break;
+			case 'c':
+				this.setTotal(new Fraction(0,1));		
+				break;
+			}
+	
+		}else {
+			this.doError(operator);
 		}
 	}
-	
 	private void doOperator(String operator){
 		if (this.getOperator() == null){
 			this.setOperator(operator);
 		}else{
-			doExit(operator);
+			this.doError(operator);
 		}
+	}
+	
+	private void reset(){
+		this.setTotal(new Fraction(0,1));
+		this.setOperand(null);
+		this.setOperator(null);
 	}
 	
 	
