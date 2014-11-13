@@ -8,8 +8,6 @@
  */
 
 
-import java.util.StringTokenizer;
-
 public class FractionCalculator {
 	
 	private Fraction total;
@@ -49,7 +47,10 @@ public class FractionCalculator {
 	//Calculations & other operators
 	
 
-	public void calculate(String operator, Fraction operand){
+	public void calculate(){
+		
+		String operator = this.getOperator();
+		Fraction operand = this.getOperand();
 		
 		this.setOperand(null);
 		this.setOperator(null);
@@ -71,27 +72,12 @@ public class FractionCalculator {
 		}				
 	}	
 	
-	public void absolute(){
-		this.setTotal(this.getTotal().absValue());	
-	}
-	
-	public void negate(){
-		this.setTotal(this.getTotal().negate());
-		}
-	
-	public void clear(){
-		this.setTotal(new Fraction(0,1));
-	}
-
 	
 	//Input reading methods
-	
-	
-	//
 	private String parse(String str){
 		try {
 			Integer.parseInt(str);
-			return "Integer";
+			return str;
 		} catch(Exception NumberFormatException){
 		
 			if (str == "+" ||
@@ -125,20 +111,47 @@ public class FractionCalculator {
 			
 			if (this.getOperator() != null){
 				this.setOperand(entry);
-				this.calculate(this.getOperator(), this.getOperand());	
+				this.calculate();	
 			} else {
 				this.setTotal(entry);
 			}
 		
 		}catch (Exception NumberFormatException){
-			this.doError(str);
+			this.doExit(str);
 		}
 	}
 	
-	public void doError(String str){
-		System.out.println(str + "is not a valid entry");
+	public void doExit(String str){
+		if (str == "*" || str == "/" || str == "-" || str == "+"){
+			System.out.println("Cannot have two operators in a row");
+		}else if (! (str.toLowerCase().charAt(0) == 'q')){
+			System.out.println("'"+str + "' is not a valid entry");
+		}
 		System.out.println("Ending program.");
 		System.exit(0);
+	}
+	
+	public void doOperation(String operator){
+		switch (operator){
+		case "a":
+			this.setTotal(this.getTotal().absValue());
+			break;
+		case "n":
+			this.setTotal(this.getTotal().negate());
+			break;
+		case "c":
+			this.setTotal(new Fraction(0,1));		
+			break;
+		}
+	}
+	
+	public void doOperator(String operator){
+		if (this.getOperator() == null){
+			this.setOperator(operator);
+		}else{
+			doExit(operator);
+		}
+		
 	}
 	
 	

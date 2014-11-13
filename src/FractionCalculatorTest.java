@@ -24,7 +24,7 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(1,1), "/", new Fraction(1,2), new Fraction(2,1), "Divide test 3 failed");
 		testCalc(fc, new Fraction(1,2), "/", new Fraction(2,1), new Fraction(1,4), "Divide test 4 failed");
 		
-		//test Negate
+		//test multiply
 		testCalc(fc, new Fraction(0,1), "*", new Fraction(1,2), new Fraction(0,1), "Negate test 1 failed");
 		testCalc(fc, new Fraction(1,2), "*", new Fraction(1,4), new Fraction(1,8), "Negate test 2 failed");
 		testCalc(fc, new Fraction(1,2), "*", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");
@@ -41,7 +41,11 @@ public class FractionCalculatorTest {
 		testCalc(fc, new Fraction(1,2), "n", new Fraction(0,1), new Fraction(1,-2), "Negate test 2 failed");
 		testCalc(fc, new Fraction(0,1), "n", new Fraction(0,1), new Fraction(0,1), "Negate test 3 failed");		
 		
+		//test Clear - f2 is redundant
+		testCalc(fc, new Fraction(1,-2), "c", new Fraction(0,1), new Fraction(0,1), "Clear test 1 failed");
 
+		
+		
 		//test doThings
 		
 		testDoFraction(fc, new Fraction(1,2), "+", "1/2", new Fraction(1,1), "doFraction test 1 failed");
@@ -53,6 +57,8 @@ public class FractionCalculatorTest {
 		
 		System.out.println(fc);
 		System.out.println("Tests complete");
+		
+
 	}
 
 	
@@ -77,15 +83,18 @@ public class FractionCalculatorTest {
     }
 	   
     static void testCalc(FractionCalculator calc, Fraction startValue, String operator, Fraction operand, Fraction result, String message){
-    	    	//f2 is redundant for a and n 
+    	    	//f2 is redundant for a, n and c
     	calc.setTotal(startValue);
     	
-    	if (operator.equals("a")){
-    		calc.absolute();
-    	} else if (operator.equals("n")){
-    		calc.negate();
+    	if (operator.equals("a") ||
+    		operator.equals("c") ||
+    		operator.equals("n")){
+    		calc.doOperation(operator);
+ 
     	} else{
-    		calc.calculate(operator, operand);
+    		calc.setOperator(operator);
+    		calc.setOperand(operand);
+    		calc.calculate();
     	}
     	
     	if (! calc.getTotal().equals(result)){
@@ -96,7 +105,8 @@ public class FractionCalculatorTest {
     }
     
     
-    
+    //To Write:
+    //Test Operation
     
     //Test code removed due to change of method to private
     
