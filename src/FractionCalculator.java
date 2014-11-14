@@ -104,10 +104,9 @@ public class FractionCalculator {
 		try{
 			Fraction entry = Fraction.parseFraction(str);
 			
-			if (entry == null){
-				doError(str);
-			}
-			else if (this.getOperator() != null){
+			if (entry.toString().equals("0/0")){
+				this.reset();
+			} else if (this.getOperator() != null){
 				this.setOperand(entry);
 				this.calculate();	
 			} else {
@@ -209,8 +208,7 @@ public class FractionCalculator {
 			fc = new FractionCalculator(entry);
 		}else{
 			fc = new FractionCalculator();
-		}
-		
+		}		
 		fc.launch();		
 		}
 

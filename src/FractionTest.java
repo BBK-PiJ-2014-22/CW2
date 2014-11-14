@@ -4,6 +4,8 @@
 public class FractionTest {
     public static void main(String[] args) {
 
+    	System.out.println(new Fraction(1,0));
+    	
     	
         // test divide by zero - should print an error and exit
         new Fraction(1, 0);

@@ -1,10 +1,10 @@
 /**
- * Created by keith for the second coursework assignment. Modified by Jamie.
- * 
  * Allows mathematical based upon fractions, by storing fractions with Numerator/Denominator. 
  * 
+ * Fractions are immutable and cannot be changed. Methods should be used to return a new fraction instead.
+ */ 
+/*Created by keith for the second coursework assignment. Modified by Jamie.
  * 
- * Fractions are immutable and cannot be changed. Methods should be used to return a new fraction instead
  * Public Methods (beyond overrides of standard public methods), which perform normal mathematical
  * functions and return a new fraction:
  * 		multiply(Fraction)
