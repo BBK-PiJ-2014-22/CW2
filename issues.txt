@@ -1,0 +1,11 @@
+issues:
+
+
+
+can't launch with argument
+
+crashes with a " " at the end of the line
+
+Both seem to be the same thing.
+
+Need to fix the removeWhitespace function
