@@ -54,12 +54,13 @@ public class FractionCalculator {
 	
 	public Fraction evaluate(Fraction start, String entry){
 	
-		int tokenEnd = entry.indexOf(" ");
+		removeWhitespace(entry);
 		
-		if (tokenEnd > 0){
+		int tokenEnd = entry.indexOf(" ");
+		if (tokenEnd == entry.length()){ // do nothing - blank token
+		}else if (tokenEnd > 0){
 			this.parseToken(entry.substring(0,tokenEnd));
 			evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
-	
 		}else{
 			this.parseToken(entry);	
 		}
@@ -92,6 +93,14 @@ public class FractionCalculator {
 				this.doError(str);
 			}
 		}	
+	}
+	
+	private static String removeWhitespace(String entry){
+		if (entry.charAt(0) != ' ' && entry.length() > 1){
+			return entry;
+		}else{
+			return removeWhitespace(entry.substring(1, entry.length()));
+		}
 	}
 	
 	
