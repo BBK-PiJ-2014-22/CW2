@@ -52,24 +52,24 @@ public class FractionCalculator {
 		
 		if (tokenEnd > 0){
 			this.parseToken(entry.substring(0,tokenEnd));
-			evaluate(entry.substring(tokenEnd, entry.length()));
-			return this.getTotal();
+			evaluate(entry.substring(tokenEnd+1, entry.length()));
+	
 		}else{
-			this.parseToken(entry);
-			return this.getTotal();
+			this.parseToken(entry);	
 		}
-		
+		return this.getTotal();
 	}
 	
+	
 	private void parseToken(String str){
-		try {
+		  try {
 			Integer.parseInt(str);
 			doFraction(str+"/1");
 		} catch(Exception NumberFormatException){
-			if (str == "+" ||
-				str == "-" ||
-				str == "/" ||
-				str == "*"){
+			if (str.equals("+") ||
+				str.equals("-") ||
+				str.equals("/") ||
+				str.equals("*")){
 					doOperator(str);
 					
 			}else if(str.indexOf("/") >= 1 ){	
@@ -142,8 +142,8 @@ public class FractionCalculator {
 	}
 
 	private void doError(String str){
-		if (str == "*" || str == "/" || str == "-" || str == "+" ||
-			str.substring(0,1) == "a" || str.substring(0,1) == "c" || str.substring(0,1) == "n"){
+		if (str.equals("*") || str.equals("/") || str.equals("-") || str.equals("+") ||
+			str.charAt(0) == 'a' || str.charAt(0) == 'c' || str.charAt(0) == 'n'){
 			System.out.println("Cannot have two operators in a row");			
 		}else if (! (str.toLowerCase().charAt(0) == 'q')){
 			System.out.println("'"+str + "' is not a valid entry");

@@ -18,6 +18,23 @@ public class FractionCalculatorTest {
 		
 		FractionCalculator fc = new FractionCalculator();
 
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 * 1/2", new Fraction(1,4), null, null, "Evaluate test 7 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 * 1/2 + 1/4", new Fraction(1,4), null, null, "Evaluate test 7 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 * 1/2 n", new Fraction(1,4), null, null, "Evaluate test 7 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 * 1/2 c", new Fraction(1,4), null, null, "Evaluate test 7 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 * 1/2", new Fraction(1,4), null, null, "Evaluate test 7 failed");
+		
+		//FractionCalculator calc, Fraction startTotal, String startOperator, String entry, Fraction result, String operator, Fraction operand,  String message
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 n", new Fraction(1,-2), null, null, "Evaluate test 1 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/-2 a", new Fraction(1,2), null, null, "Evaluate test 2 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 c", new Fraction(0,1), null, null, "Evaluate test 3 failed");
+		
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 1/4", new Fraction(1,4), null, null, "Evaluate test 4 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 c 1/2", new Fraction(1,2), null, null, "Evaluate test 5 failed");
+		testEvaluate(fc, new Fraction(0,1), null, "1/2 1/2 c", new Fraction(0,1), null, null, "Evaluate test 6 failed");
+		
+
+		
 		
 		
 		
