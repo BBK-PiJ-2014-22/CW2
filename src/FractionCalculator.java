@@ -7,7 +7,6 @@
  * 
  */
 
-
 public class FractionCalculator {
 	
 	private Fraction total;
@@ -17,6 +16,13 @@ public class FractionCalculator {
 	public FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
 	}
+	
+	public FractionCalculator(String entry){
+		this.setTotal(new Fraction(0,1));
+		this.evaluate(this.getTotal(), entry);
+	}
+	
+	
 	
 	@Override
 	public String toString() {
@@ -46,13 +52,13 @@ public class FractionCalculator {
 	
 	//Input reading methods
 	
-	public Fraction evaluate(String entry){
+	public Fraction evaluate(Fraction start, String entry){
 	
 		int tokenEnd = entry.indexOf(" ");
 		
 		if (tokenEnd > 0){
 			this.parseToken(entry.substring(0,tokenEnd));
-			evaluate(entry.substring(tokenEnd+1, entry.length()));
+			evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
 	
 		}else{
 			this.parseToken(entry);	
@@ -179,19 +185,49 @@ public class FractionCalculator {
 		case "+":
 			this.setTotal(this.getTotal().add(operand));
 			break;
-		}
-		
+		}	
 		this.setOperand(null);
 		this.setOperator(null);
 	}	
+
+
+	//Main and Launch methods
 	
-	
-	
-	//Evaluate - 
-	//Takes in a fraction (starting value) and a string(calculation instructions)
-	//Results in new fraction
-	//Recursive?
-	
-	
+	public static void main(String[] args){
+		
+		FractionCalculator fc;
+		
+		if (args.length > 0){
+			String entry = "";
+			for (int i = 0; i < args.length ; i++){
+				entry = entry + args[i] + " ";
+			}
+			fc = new FractionCalculator(entry);
+		}else{
+			fc = new FractionCalculator();
+		}
+		
+		fc.launch();		
+		}
+
+	private void launch(){
+		
+		System.out.println("Welcome to Fraction Calculator!");
+		
+		String entry;
+		Fraction result;
+		
+		do{
+			System.out.println("Enter calculation:");
+			result = this.evaluate(this.getTotal(), System.console().readLine());
+			System.out.println("New Total: "+ result);
+			System.out.println();
+		}while (true);	
+	}
 	
 }
+	
+
+
+
+
