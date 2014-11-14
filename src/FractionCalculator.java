@@ -149,9 +149,10 @@ public class FractionCalculator {
 
 	private void doError(String str){
 		if (str.equals("*") || str.equals("/") || str.equals("-") || str.equals("+") ||
-			str.charAt(0) == 'a' || str.charAt(0) == 'c' || str.charAt(0) == 'n'){
+			(str.charAt(0) == 'a' || str.charAt(0) == 'c' || str.charAt(0) == 'n') &&
+			(str.indexOf("/") < 0)){
 			System.out.println("Cannot have two operators in a row");			
-		}else if (! (str.toLowerCase().charAt(0) == 'q')){
+		}else{
 			System.out.println("'"+str + "' is not a valid entry");
 		}		
 		this.reset();
@@ -214,7 +215,6 @@ public class FractionCalculator {
 		
 		System.out.println("Welcome to Fraction Calculator!");
 		
-		String entry;
 		Fraction result;
 		
 		do{
