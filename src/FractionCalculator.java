@@ -103,8 +103,11 @@ public class FractionCalculator {
 	private void doFraction(String str){
 		try{
 			Fraction entry = Fraction.parseFraction(str);
-
-			if (this.getOperator() != null){
+			
+			if (entry == null){
+				doError(str);
+			}
+			else if (this.getOperator() != null){
 				this.setOperand(entry);
 				this.calculate();	
 			} else {
