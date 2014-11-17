@@ -54,10 +54,10 @@ public class FractionCalculator {
 	
 	public Fraction evaluate(Fraction start, String entry){
 	
-		removeWhitespace(entry);
-		
+		entry = entry.trim();		
 		int tokenEnd = entry.indexOf(" ");
-		if (tokenEnd == entry.length()){ // do nothing - blank token
+		
+		if (entry.length() == 0){ // do nothing - blank token
 		}else if (tokenEnd > 0){
 			this.parseToken(entry.substring(0,tokenEnd));
 			evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
@@ -95,15 +95,7 @@ public class FractionCalculator {
 		}	
 	}
 	
-	private static String removeWhitespace(String entry){
-		if (entry.charAt(0) != ' ' && entry.length() > 1){
-			return entry;
-		}else{
-			return removeWhitespace(entry.substring(1, entry.length()));
-		}
-	}
-	
-	
+
 	//do methods
 	//Private methods, to be called by the Parse method. These methods 
 	//will perform actions based upon the String tokens fed into them, 
@@ -224,6 +216,10 @@ public class FractionCalculator {
 	private void launch(){
 		
 		System.out.println("Welcome to Fraction Calculator!");
+	
+		if (! this.getTotal().equals(new Fraction(0,1))){
+			System.out.println("Total: " + this.getTotal());
+		}
 		
 		Fraction result;
 		
