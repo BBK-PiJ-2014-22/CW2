@@ -40,7 +40,9 @@ public class FractionCalculator {
 			result = this.evaluate(this.getTotal(), System.console().readLine());
 			System.out.println("New Total: "+ result);
 			System.out.println();
-		}while (!this.operator.equals("q"));	
+		}while (!quit);	
+		
+		System.out.println("Thank you for using Fraction Calculator.");
 	}
 	
 	
@@ -49,7 +51,7 @@ public class FractionCalculator {
 	private Fraction total;
 	private Fraction operand;
 	private String operator;
-	
+	private boolean quit = false;
 	
 	
 	
@@ -125,7 +127,7 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'c' ){
 					doUnaryOperation(str);
 			}else if(str.toLowerCase().charAt(0) == 'q'){
-				this.setOperator("q");
+				this.quit = true;
 			}else{
 				this.doError(str);
 			

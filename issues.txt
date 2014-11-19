@@ -1,5 +1,2 @@
 issues:
 
-Need to remove exception handling
-
-Need to remove System.exit and make things quit when "q" instead
