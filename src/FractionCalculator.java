@@ -38,8 +38,7 @@ public class FractionCalculator {
 		do{
 			System.out.println("Enter calculation:");
 			result = this.evaluate(this.getTotal(), System.console().readLine());
-			//out temporarily for debugging System.out.println(result);
-			System.out.println(this);//temporary for debugging
+			System.out.println(result);
 			System.out.println();
 		}while (!quit);	
 		
@@ -107,11 +106,10 @@ public class FractionCalculator {
 			parsable = this.parseToken(entry);
 		}
 		
-		if (!parsable){
-			System.out.println("Error");
-		} else if (tokenEnd > 0){
+		if (tokenEnd > 0 && parsable){
 			this.evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
 		}
+		
 		return this.getTotal();
 	}
 	
@@ -202,15 +200,15 @@ public class FractionCalculator {
 	}
 
 	private void doError(String str){
-		//actual System.out.println("Error");
-		//debug
+		System.out.println("Error");
+		/*//debug
 		if (str.equals("*") || str.equals("/") || str.equals("-") || str.equals("+") ||
 				(str.charAt(0) == 'a' || str.charAt(0) == 'c' || str.charAt(0) == 'n') &&
 				(str.indexOf("/") < 0)){
 				System.out.println("Cannot have two operators in a row");			
 			}else{
 				System.out.println("'"+str + "' is not a valid entry");
-			}
+			}*/
 		
 		this.reset();
 	}
