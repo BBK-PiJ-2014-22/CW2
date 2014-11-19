@@ -1,11 +1,5 @@
 issues:
 
+Need to remove exception handling
 
-
-can't launch with argument
-
-crashes with a " " at the end of the line
-
-Both seem to be the same thing.
-
-Need to fix the removeWhitespace function
+Need to remove System.exit and make things quit when "q" instead

@@ -9,10 +9,51 @@
 
 public class FractionCalculator {
 	
+	public static void main(String[] args){
+		
+		FractionCalculator fc;
+		
+		if (args.length > 0){
+			String entry = "";
+			for (int i = 0; i < args.length ; i++){
+				entry = entry + args[i] + " ";
+			}
+			fc = new FractionCalculator(entry);
+		}else{
+			fc = new FractionCalculator();
+		}		
+		fc.launch();		
+		}
+
+	private void launch(){
+		
+		System.out.println("Welcome to Fraction Calculator!");
+	
+		if (! this.getTotal().equals(new Fraction(0,1))){
+			System.out.println("Total: " + this.getTotal());
+		}
+		
+		Fraction result;
+		
+		do{
+			System.out.println("Enter calculation:");
+			result = this.evaluate(this.getTotal(), System.console().readLine());
+			System.out.println("New Total: "+ result);
+			System.out.println();
+		}while (!this.operator.equals("q"));	
+	}
+	
+	
+	
+	
 	private Fraction total;
 	private Fraction operand;
 	private String operator;
 	
+	
+	
+	
+	//Constructors, toString, Getters & Setters
 	public FractionCalculator(){
 		this.setTotal(new Fraction(0,1));
 	}
@@ -21,8 +62,6 @@ public class FractionCalculator {
 		this.setTotal(new Fraction(0,1));
 		this.evaluate(this.getTotal(), entry);
 	}
-	
-	
 	
 	@Override
 	public String toString() {
@@ -33,19 +72,19 @@ public class FractionCalculator {
 	public Fraction getTotal() {
 		return total;
 	}
-	public void setTotal(Fraction total) {
+	private void setTotal(Fraction total) {
 		this.total = total;
 	}
 	public Fraction getOperand() {
 		return operand;
 	}
-	public void setOperand(Fraction operand) {
+	private void setOperand(Fraction operand) {
 		this.operand = operand;
 	}
 	public String getOperator() {
 		return operator;
 	}
-	public void setOperator(String operator) {
+	private void setOperator(String operator) {
 		this.operator = operator;
 	}
 	
@@ -69,16 +108,15 @@ public class FractionCalculator {
 	
 	
 	private void parseToken(String str){
-		  try {
-			Integer.parseInt(str);
-			doFraction(str+"/1");
-		} catch(Exception NumberFormatException){
+				
 			if (str.equals("+") ||
 				str.equals("-") ||
 				str.equals("/") ||
 				str.equals("*")){
 					doOperator(str);
 					
+			}else if (isNumber(str)){
+				doFraction(str + "/1");
 			}else if(str.indexOf("/") >= 1 ){	
 				doFraction(str);				
 
@@ -87,11 +125,10 @@ public class FractionCalculator {
 					 str.toLowerCase().charAt(0) == 'c' ){
 					doUnaryOperation(str);
 			}else if(str.toLowerCase().charAt(0) == 'q'){
-				System.out.println("Thank you for using Fraction calculator!");
-				System.exit(0);
+				this.setOperator("q");
 			}else{
 				this.doError(str);
-			}
+			
 		}	
 	}
 	
@@ -99,12 +136,19 @@ public class FractionCalculator {
 	//do methods
 	//Private methods, to be called by the Parse method. These methods 
 	//will perform actions based upon the String tokens fed into them, 
-	//updating the FractionCalculator.
+	//updating the FractionCalculator as appropriate.
 	
 	private void doFraction(String str){
-		try{
-			Fraction entry = Fraction.parseFraction(str);
-			
+		
+		boolean parsable = true;
+		Fraction entry;
+		
+		if (!isNumber(str.substring(0, str.indexOf("/"))) ||
+			!isNumber(str.substring(str.indexOf("/")+1, str.length()))){
+			parsable = false;
+		}
+		if (parsable){	
+				entry = Fraction.parseFraction(str);
 			if (entry.toString().equals("0/0")){
 				this.reset();
 			} else if (this.getOperator() != null){
@@ -113,8 +157,6 @@ public class FractionCalculator {
 			} else {
 				this.setTotal(entry);
 			}
-		}catch (Exception NumberFormatException){
-			this.doError(str);
 		}
 	}
 	
@@ -164,7 +206,7 @@ public class FractionCalculator {
 	
 	
 	//Internal update methods
-	//To be called from the Do methods to make updates to the object
+	//To be called from the Do methods to make specific updates to the object
 	private void reset(){
 		this.setTotal(new Fraction(0,1));
 		this.setOperand(null);
@@ -194,41 +236,18 @@ public class FractionCalculator {
 		this.setOperator(null);
 	}	
 
-
-	//Main and Launch methods
-	
-	public static void main(String[] args){
+	//Used in Fraction and Numeral parsing to get around lack of exception handling
+	private static boolean isNumber(String token){
 		
-		FractionCalculator fc;
-		
-		if (args.length > 0){
-			String entry = "";
-			for (int i = 0; i < args.length ; i++){
-				entry = entry + args[i] + " ";
-			}
-			fc = new FractionCalculator(entry);
+		if (!Character.isDigit(token.charAt(0))){
+			return false;
 		}else{
-			fc = new FractionCalculator();
-		}		
-		fc.launch();		
+			if (token.length() == 1){
+				return true;
+			}else{
+				return isNumber(token.substring(1, token.length()));
+			}
 		}
-
-	private void launch(){
-		
-		System.out.println("Welcome to Fraction Calculator!");
-	
-		if (! this.getTotal().equals(new Fraction(0,1))){
-			System.out.println("Total: " + this.getTotal());
-		}
-		
-		Fraction result;
-		
-		do{
-			System.out.println("Enter calculation:");
-			result = this.evaluate(this.getTotal(), System.console().readLine());
-			System.out.println("New Total: "+ result);
-			System.out.println();
-		}while (true);	
 	}
 	
 }
