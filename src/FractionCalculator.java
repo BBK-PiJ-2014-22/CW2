@@ -30,8 +30,7 @@ public class FractionCalculator {
 		System.out.println("Welcome to Fraction Calculator!");
 	
 		if (! this.getTotal().equals(new Fraction(0,1))){
-			//System.out.println(this.getTotal());
-			System.out.println(this);//temporary for debugging
+			System.out.println(this.getTotal());
 		}
 		
 		Fraction result;
@@ -39,7 +38,8 @@ public class FractionCalculator {
 		do{
 			System.out.println("Enter calculation:");
 			result = this.evaluate(this.getTotal(), System.console().readLine());
-			System.out.println("New Total: "+ result);
+			//out temporarily for debugging System.out.println(result);
+			System.out.println(this);//temporary for debugging
 			System.out.println();
 		}while (!quit);	
 		

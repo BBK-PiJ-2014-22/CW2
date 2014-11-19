@@ -1,3 +1,2 @@
 issues:
 
-abs and neg should not count as operators for the 2 operators in a row rule
