@@ -30,7 +30,8 @@ public class FractionCalculator {
 		System.out.println("Welcome to Fraction Calculator!");
 	
 		if (! this.getTotal().equals(new Fraction(0,1))){
-			System.out.println("Total: " + this.getTotal());
+			//System.out.println(this.getTotal());
+			System.out.println(this);//temporary for debugging
 		}
 		
 		Fraction result;
@@ -167,9 +168,7 @@ public class FractionCalculator {
 		
 		operator = operator.substring(0,1).toLowerCase();
 		
-		if (this.getOperator() == null){
-	
-			switch (operator){
+		switch (operator){
 			case "a":
 				this.setTotal(this.getTotal().absValue());
 				break;
@@ -180,10 +179,6 @@ public class FractionCalculator {
 				this.setTotal(new Fraction(0,1));		
 				break;
 			}
-	
-		}else {
-			this.doError(operator);
-		}
 	}
 
 	private void doOperator(String operator){
