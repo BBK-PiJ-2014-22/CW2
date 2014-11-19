@@ -1,2 +1,3 @@
 issues:
 
+Add "New line" to clear operator
