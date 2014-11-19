@@ -27,7 +27,7 @@ public class FractionCalculator {
 
 	private void launch(){
 		
-		System.out.println("Welcome to Fraction Calculator!");
+		System.out.println("Welcome to Fraction Calculator by Jamie MacIver!");
 	
 		if (! this.getTotal().equals(new Fraction(0,1))){
 			System.out.println(this.getTotal());
@@ -95,41 +95,54 @@ public class FractionCalculator {
 	
 	public Fraction evaluate(Fraction start, String entry){
 	
+		this.setTotal(start);
 		entry = entry.trim();		
 		int tokenEnd = entry.indexOf(" ");
+		boolean parsable = false;
 		
 		if (entry.length() == 0){ // do nothing - blank token
 		}else if (tokenEnd > 0){
-			this.parseToken(entry.substring(0,tokenEnd));
-			evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
-		}else{
-			this.parseToken(entry);	
+			parsable = this.parseToken(entry.substring(0,tokenEnd));
+		}else {
+			parsable = this.parseToken(entry);
+		}
+		
+		if (!parsable){
+			System.out.println("Error");
+		} else if (tokenEnd > 0){
+			this.evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
 		}
 		return this.getTotal();
 	}
 	
 	
-	private void parseToken(String str){
+	private boolean parseToken(String str){
 				
 			if (str.equals("+") ||
 				str.equals("-") ||
 				str.equals("/") ||
 				str.equals("*")){
 					doOperator(str);
+					return true;
 					
 			}else if (isNumber(str)){
 				doFraction(str + "/1");
+				return true;
 			}else if(str.indexOf("/") >= 1 ){	
-				doFraction(str);				
+				doFraction(str);
+				return true;
 
 			}else if(str.toLowerCase().charAt(0) == 'a' ||
 					 str.toLowerCase().charAt(0) == 'n' ||
-					 str.toLowerCase().charAt(0) == 'c' ){
+					 str.toLowerCase().charAt(0) == 'c'){
 					doUnaryOperation(str);
+					return true;
 			}else if(str.toLowerCase().charAt(0) == 'q'){
 				this.quit = true;
+				return true;
 			}else{
 				this.doError(str);
+				return false;
 			
 		}	
 	}
@@ -248,6 +261,9 @@ public class FractionCalculator {
 			}
 		}
 	}
+	
+
+	
 	
 }
 	

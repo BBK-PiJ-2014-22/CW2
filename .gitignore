@@ -52,3 +52,6 @@ bin
 
 src/Fraction.java
 src/Fraction.java
+
+*.class
+
