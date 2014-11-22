@@ -9,7 +9,7 @@ public class FractionCalculatorTest {
 		testEvaluateFull(fc, fc.getTotal(), "- 1/2 - 1/2 - 1/2", new Fraction(0,1), null, "Evaluate Full Test 3 Failed");
 		testEvaluateFull(fc, fc.getTotal(), "1/2 + 1/2 * 1/2 +", new Fraction(1,2), "+", "Evaluate Full Test 3 Failed");
 		testEvaluateFull(fc, fc.getTotal(), "+ 1/2 + 1/2", new Fraction(0,1), null, "Evaluate Full Test 4 Failed");
-		testEvaluateFull(fc, fc.getTotal(), "-1/2 + abs 1/2 +", new Fraction(0,1), "+", "Evaluate Full Test 5 Failed");
+		testEvaluateFull(fc, fc.getTotal(), "-1/2 + abs 1/2 +", new Fraction(1,1), "+", "Evaluate Full Test 5 Failed");
 		
 		
 		System.out.println(fc);

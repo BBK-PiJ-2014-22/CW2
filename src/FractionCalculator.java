@@ -25,6 +25,7 @@ public class FractionCalculator {
 		fc.launch();		
 		}
 
+	
 	private void launch(){
 		
 		System.out.println("Welcome to Fraction Calculator by Jamie MacIver!");
@@ -38,7 +39,8 @@ public class FractionCalculator {
 		do{
 			System.out.println("Enter calculation:");
 			result = this.evaluate(this.getTotal(), System.console().readLine());
-			System.out.println(result);
+			//System.out.println(result);
+			System.out.println(this);
 			System.out.println();
 		}while (!quit);	
 		
@@ -187,9 +189,7 @@ public class FractionCalculator {
 		
 		switch (operator){
 			case "a":
-				System.out.println(this);
 				this.setTotal(this.getTotal().absValue());
-				System.out.println(this);
 				break;
 			case "n":
 				this.setTotal(this.getTotal().negate());
@@ -257,6 +257,10 @@ public class FractionCalculator {
 
 	//Used in Fraction and Numeral parsing to get around lack of exception handling
 	private static boolean isNumber(String token){
+		
+		if (token.charAt(0) == '-'){
+			token = token.substring(1,token.length());
+		}
 		
 		if (!Character.isDigit(token.charAt(0))){
 			return false;
