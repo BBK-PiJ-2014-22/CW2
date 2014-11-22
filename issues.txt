@@ -1,4 +1,6 @@
 issues:
 
 Add "New line" to clear operator
+Negative numbers don't seem to work
+ABs might not be working (might be above problem)
 

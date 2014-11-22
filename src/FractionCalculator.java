@@ -120,8 +120,15 @@ public class FractionCalculator {
 				str.equals("-") ||
 				str.equals("/") ||
 				str.equals("*")){
+					
+				if (this.getOperator() == null){	
 					doOperator(str);
 					return true;
+				}else{
+					doError(str);
+					return false;
+				}
+				
 					
 			}else if (isNumber(str)){
 				doFraction(str + "/1");
@@ -180,7 +187,9 @@ public class FractionCalculator {
 		
 		switch (operator){
 			case "a":
+				System.out.println(this);
 				this.setTotal(this.getTotal().absValue());
+				System.out.println(this);
 				break;
 			case "n":
 				this.setTotal(this.getTotal().negate());
