@@ -106,7 +106,7 @@ public class FractionCalculator {
 		boolean parsable = false;
 		
 		if (entry.length() == 0){
-			//Do nothing - this was only spaces
+			//Do nothing - this was only whitespace
 		}else if (tokenEnd > 0){
 			parsable = this.parseToken(entry.substring(0,tokenEnd));
 		}else {
@@ -116,13 +116,13 @@ public class FractionCalculator {
 		if (tokenEnd > 0 && parsable){
 			this.evaluate(this.getTotal(), entry.substring(tokenEnd+1, entry.length()));
 		}
-		
 		return this.getTotal();
 	}
 	
 	
 	private boolean parseToken(String str){
-				
+			//Reads a token passed to it from Evaluate and then calls an appropriate operation according to token
+			//Returns true if the token can be parsed
 			if (str.equals("+") ||
 				str.equals("-") ||
 				str.equals("/") ||
@@ -135,8 +135,7 @@ public class FractionCalculator {
 					doError(str);
 					return false;
 				}
-				
-					
+						
 			}else if (isNumber(str)){
 				doFraction(str + "/1");
 				return true;
@@ -161,12 +160,12 @@ public class FractionCalculator {
 	
 
 	//do methods
-	//Private methods, to be called by the Parse method. These methods 
-	//will perform actions based upon the String tokens fed into them, 
-	//updating the FractionCalculator as appropriate.
+	//Private methods, to be called by the Parse method or eachother. These methods 
+	//will perform actions based upon the String tokens fed into them, updating the 
+	//FractionCalculator as appropriate.
 	
 	private void doFraction(String str){
-		
+		//Performs actions if str is parsable as a fraction, or calls doError if not
 		boolean parsable = true;
 		Fraction entry;
 		
@@ -184,6 +183,8 @@ public class FractionCalculator {
 			} else {
 				this.setTotal(entry);
 			}
+		}else{
+			doError(str);
 		}
 	}
 	
@@ -215,14 +216,13 @@ public class FractionCalculator {
 
 	private void doError(String str){
 		System.out.println("Error");
-		/*//debug
 		if (str.equals("*") || str.equals("/") || str.equals("-") || str.equals("+") ||
 				(str.charAt(0) == 'a' || str.charAt(0) == 'c' || str.charAt(0) == 'n') &&
 				(str.indexOf("/") < 0)){
 				System.out.println("Cannot have two operators in a row");			
 			}else{
 				System.out.println("'"+str + "' is not a valid entry");
-			}*/
+			}
 		
 		this.reset();
 	}
@@ -232,13 +232,14 @@ public class FractionCalculator {
 	//Internal update methods
 	//To be called from the Do methods to make specific updates to the object
 	private void reset(){
+		//Resets the FractionCalculator to it's initial state
 		this.setTotal(new Fraction(0,1));
 		this.setOperand(null);
 		this.setOperator(null);
 	}
 	
 	private void calculate(){
-		
+		//Performs the correct calculation based upon values stored in the FractionCalculator		
 		String operator = this.getOperator();
 		Fraction operand = this.getOperand();
 	
@@ -261,12 +262,12 @@ public class FractionCalculator {
 	}	
 
 	//Used in Fraction and Numeral parsing to get around lack of exception handling
+	//Returns true if the token is an integer number
 	private static boolean isNumber(String token){
 		
 		if (token.charAt(0) == '-'){
 			token = token.substring(1,token.length());
 		}
-		
 		if (!Character.isDigit(token.charAt(0))){
 			return false;
 		}else{
@@ -277,10 +278,7 @@ public class FractionCalculator {
 			}
 		}
 	}
-	
 
-	
-	
 }
 	
 

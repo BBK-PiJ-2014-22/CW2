@@ -14,7 +14,8 @@ public class FractionCalculatorTest {
 		testEvaluateFull(fc, new Fraction(1,2), "- -1/2 + 1/2 n a n c", new Fraction(0,1), null, "Evaluate Full Test 7 Failed");		
 		testEvaluateFull(fc, fc.getTotal(), "1/2 + 1/2 +    ", new Fraction(1,1), "+", "Evaluate Full Test 8 Failed");
 		testEvaluateFull(fc, fc.getTotal(), "", new Fraction(1,1), null, "Evaluate Full Test 9 Failed");
-		
+		testEvaluateFull(fc, fc.getTotal(), "+      ", new Fraction(1,1), "+", "Evaluate Full Test 10 Failed");		
+		testEvaluateFull(fc, fc.getTotal(), "1/2sdd", new Fraction(0,1), null, "Evaluate Full Test 10 Failed");	
 		
 		System.out.println(fc);
 		System.out.println("Tests complete");
