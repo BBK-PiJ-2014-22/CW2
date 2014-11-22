@@ -10,6 +10,10 @@ public class FractionCalculatorTest {
 		testEvaluateFull(fc, fc.getTotal(), "1/2 + 1/2 * 1/2 +", new Fraction(1,2), "+", "Evaluate Full Test 3 Failed");
 		testEvaluateFull(fc, fc.getTotal(), "+ 1/2 + 1/2", new Fraction(0,1), null, "Evaluate Full Test 4 Failed");
 		testEvaluateFull(fc, fc.getTotal(), "-1/2 + abs 1/2 +", new Fraction(1,1), "+", "Evaluate Full Test 5 Failed");
+		testEvaluateFull(fc, new Fraction(1,2), "-1/2 + 1/2 n a n", new Fraction(-1,2), null, "Evaluate Full Test 6 Failed");
+		testEvaluateFull(fc, new Fraction(1,2), "- -1/2 + 1/2 n a n c", new Fraction(0,1), null, "Evaluate Full Test 7 Failed");		
+		testEvaluateFull(fc, fc.getTotal(), "1/2 + 1/2 +    ", new Fraction(1,1), "+", "Evaluate Full Test 8 Failed");
+		testEvaluateFull(fc, fc.getTotal(), "", new Fraction(1,1), null, "Evaluate Full Test 9 Failed");
 		
 		
 		System.out.println(fc);

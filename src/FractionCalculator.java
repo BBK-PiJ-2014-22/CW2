@@ -1,14 +1,10 @@
 /**
- * 
- *Calculations
- *Operations
- *
- * 
- * 
+ *To be used with the Fraction object. Provides calculations of Fractions using a String input.
  */
 
 public class FractionCalculator {
-	
+
+	//Main & Launching code
 	public static void main(String[] args){
 		
 		FractionCalculator fc;
@@ -47,34 +43,35 @@ public class FractionCalculator {
 		System.out.println("Thank you for using Fraction Calculator.");
 	}
 	
-	
-	
-	
 	private Fraction total;
 	private Fraction operand;
 	private String operator;
 	private boolean quit = false;
 	
-	
-	
+
 	//Constructors, toString, Getters & Setters
 	public FractionCalculator(){
+		/**Initialises FractionCalculator with value of 0*/
 		this.setTotal(new Fraction(0,1));
 	}
 	
 	public FractionCalculator(String entry){
+		/**Initialised FractionCalculator with value of calculation "entry"*/
 		this.setTotal(new Fraction(0,1));
 		this.evaluate(this.getTotal(), entry);
 	}
 	
 	@Override
 	public String toString() {
+		/**Returns string of current status of the FractionCalculator*/
 		return "FractionCalculator [total=" + total + ", operator=" + operator + ", operand=" + operand + "]";
 	}
 	
 	public Fraction getTotal() {
+		/**Returns current value of the Fraction Calculator*/		
 		return total;
 	}
+	
 	private void setTotal(Fraction total) {
 		this.total = total;
 	}
@@ -85,6 +82,7 @@ public class FractionCalculator {
 		this.operand = operand;
 	}
 	public String getOperator() {
+		/**Returns current remembered operator stored by the FractionCalculator*/
 		return operator;
 	}
 	private void setOperator(String operator) {
@@ -95,13 +93,20 @@ public class FractionCalculator {
 	//Input reading methods
 	
 	public Fraction evaluate(Fraction start, String entry){
+		/**Takes a Fraction as a start value (usually current total) and performs a calculation based upon the entry*/
 	
 		this.setTotal(start);
+
+		if (entry.length() == 0){
+			this.setOperator(null);
+		}
+		
 		entry = entry.trim();		
 		int tokenEnd = entry.indexOf(" ");
 		boolean parsable = false;
 		
-		if (entry.length() == 0){ // do nothing - blank token
+		if (entry.length() == 0){
+			//Do nothing - this was only spaces
 		}else if (tokenEnd > 0){
 			parsable = this.parseToken(entry.substring(0,tokenEnd));
 		}else {
