@@ -152,5 +152,4 @@ public class Fraction {
 		return a;
 	}
 	
-	
 }

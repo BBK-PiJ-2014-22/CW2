@@ -1,7 +1,7 @@
 /**
  *To be used with the Fraction object. Provides calculations of Fractions using a String input.
  */
-
+//by Jamie MacIver
 public class FractionCalculator {
 
 	//Main & Launching code
@@ -24,7 +24,10 @@ public class FractionCalculator {
 	
 	private void launch(){
 		
-		System.out.println("Welcome to Fraction Calculator by Jamie MacIver!");
+		System.out.println("Welcome to Fraction Calculator by Jamie MacIver.");
+		System.out.println("Accepts the following commands:");
+		System.out.println("+ / - * [a]bsolute [n]egate [c]lear [q]uit");
+		System.out.println();
 	
 		if (! this.getTotal().equals(new Fraction(0,1))){
 			System.out.println(this.getTotal());
@@ -35,8 +38,7 @@ public class FractionCalculator {
 		do{
 			System.out.println("Enter calculation:");
 			result = this.evaluate(this.getTotal(), System.console().readLine());
-			//System.out.println(result);
-			System.out.println(this);
+			System.out.println(result);
 			System.out.println();
 		}while (!quit);	
 		
@@ -265,7 +267,7 @@ public class FractionCalculator {
 	//Returns true if the token is an integer number
 	private static boolean isNumber(String token){
 		
-		if (token.charAt(0) == '-'){
+		if (token.charAt(0) == '-' || token.charAt(0) == '+'){
 			token = token.substring(1,token.length());
 		}
 		if (!Character.isDigit(token.charAt(0))){
